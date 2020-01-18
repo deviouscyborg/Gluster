@@ -13,5 +13,10 @@
       "prefix": "ns"
     }
   },
-  "defaultProject": "hello-world"
+  "defaultProject": "hello-world",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
