@@ -30,6 +30,7 @@ export class NewsComponent implements OnInit {
 
 
     allNews: DataItem[];
+    isLoading: boolean = true;
 
     searching = false;
 
@@ -84,10 +85,12 @@ export class NewsComponent implements OnInit {
     ngOnInit(): void {
         this.newsService.getNews()
             .subscribe(newsArticles => {
+                this.isLoading=false;
                 this.allNews = newsArticles;
                 this.news = newsArticles;
                 console.log(newsArticles);
             }, error => {
+                this.isLoading=false;
                 this.allNews = [];
                 console.log(error);
             })
