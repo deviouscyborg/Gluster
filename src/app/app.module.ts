@@ -20,6 +20,7 @@ import {NewsComponent} from '~/app/news/news.component';
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 
 @NgModule({
     bootstrap: [
@@ -42,7 +43,8 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
     declarations: [
         AppComponent,
         HomeComponent,
-        NewsComponent
+        NewsComponent,
+        NewsDetailComponent
     ],
     providers: [],
     schemas: [

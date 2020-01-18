@@ -15,6 +15,7 @@ export interface DataItem {
     url: string;
     urlToImage: string;
     publishedAt: string;
+    content: string;
 }
 
 interface Source {
