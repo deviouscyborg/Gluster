@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {Observable, throwError} from 'rxjs';
 import {DataItem} from '~/app/news/news.component';
 
 @Injectable({ providedIn: 'root' })
@@ -13,7 +13,17 @@ export class NewsService {
                 map((response: {articles: DataItem[]}) => {
                     console.log('service response', response);
                     return response.articles;
-                })
+                },
+                catchError(error => {
+                    console.log('====================================');
+                    console.log('NewsService -> getNews -> error', error);
+                    console.log('====================================');
+                    if (error.status === 400) {
+                        return throwError(JSON.parse(error.error.errors[0].reason));
+                    } else {
+                        return throwError({ code: error.status, detail: error.statusText });
+                    }
+                }))
             );
     }
 

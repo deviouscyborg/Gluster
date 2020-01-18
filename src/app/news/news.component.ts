@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {SearchBar} from 'tns-core-modules/ui/search-bar';
 import {isAndroid, isIOS} from 'tns-core-modules/platform';
 import {NewsService} from '~/app/news/news.service';
+import {Unsubscribe} from '~/app/unsubscribe';
+import {takeUntil} from 'rxjs/operators';
 
 declare const IQKeyboardManager: any;
 
@@ -26,7 +28,7 @@ interface Source {
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent extends Unsubscribe implements OnInit {
 
 
     allNews: DataItem[];
@@ -39,6 +41,7 @@ export class NewsComponent implements OnInit {
     actionAndroid;
 
     constructor(private newsService: NewsService) {
+        super();
         this.actionAndroid = isAndroid;
 
         // this.news = this.allNews.filter((e) => {
@@ -84,6 +87,7 @@ export class NewsComponent implements OnInit {
 
     ngOnInit(): void {
         this.newsService.getNews()
+            .pipe(takeUntil(this._destroyed$))
             .subscribe(newsArticles => {
                 this.isLoading=false;
                 this.allNews = newsArticles;
