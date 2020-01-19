@@ -90,10 +90,12 @@ export class NewsComponent extends Unsubscribe implements OnInit {
 
         this.newsService.getNews()
             .subscribe((response: {articles: DataItem[]}) => {
+                this.isLoading = false;
                 console.log('----------------',response);
                 this.allNews = response.articles;
                 this.news = response.articles;
             }, error => {
+                this.isLoading = false;
                 console.log(error);
             });
 
