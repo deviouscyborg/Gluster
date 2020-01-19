@@ -87,18 +87,28 @@ export class NewsComponent extends Unsubscribe implements OnInit {
     }
 
     ngOnInit(): void {
+
         this.newsService.getNews()
-            .pipe(takeUntil(this._destroyed$))
-            .subscribe(newsArticles => {
-                this.isLoading=false;
-                this.allNews = newsArticles;
-                this.news = newsArticles;
-                console.log(newsArticles);
+            .subscribe((response: {articles: DataItem[]}) => {
+                console.log('----------------',response);
+                this.allNews = response.articles;
+                this.news = response.articles;
             }, error => {
-                this.isLoading=false;
-                this.allNews = [];
                 console.log(error);
-            })
+            });
+
+        // this.newsService.getNews()
+        //     .pipe(takeUntil(this._destroyed$))
+        //     .subscribe(newsArticles => {
+        //         this.isLoading=false;
+        //         this.allNews = newsArticles;
+        //         this.news = newsArticles;
+        //         console.log(newsArticles);
+        //     }, error => {
+        //         this.isLoading=false;
+        //         this.allNews = [];
+        //         console.log(error);
+        //     })
 
 
     }
