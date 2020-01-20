@@ -4,6 +4,7 @@ import {isAndroid, isIOS} from 'tns-core-modules/platform';
 import {NewsService} from '~/app/news/news.service';
 import {Unsubscribe} from '~/app/unsubscribe';
 import {takeUntil} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 declare const IQKeyboardManager: any;
 
@@ -41,7 +42,8 @@ export class NewsComponent extends Unsubscribe implements OnInit {
 
     actionAndroid;
 
-    constructor(private newsService: NewsService) {
+    constructor(private newsService: NewsService,
+                private router: Router) {
         super();
         this.actionAndroid = isAndroid;
 
@@ -113,5 +115,8 @@ export class NewsComponent extends Unsubscribe implements OnInit {
         //     })
 
 
+    }
+    openNewsDetail(item: DataItem) {
+        this.router.navigate(['news/detail'], { queryParams: { url: item.url } });
     }
 }

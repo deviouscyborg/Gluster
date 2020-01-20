@@ -21,6 +21,7 @@ import {NewsComponent} from '~/app/news/news.component';
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NewsDetailComponent } from './news/news-detail/news-detail.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     bootstrap: [
@@ -38,7 +39,8 @@ import { NewsDetailComponent } from './news/news-detail/news-detail.component';
         NativeScriptCommonModule,
         NativeScriptFormsModule,
         NativeScriptHttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        CommonModule
     ],
     declarations: [
         AppComponent,

@@ -13,7 +13,7 @@
     <RadListView id="list-view" [items]="news" marginRight="-2"
                  separatorColor="transparent" height="100%">
         <ng-template tkListItemTemplate let-item="item">
-            <StackLayout>
+            <StackLayout (tap)="openNewsDetail(item)">
                 <GridLayout rows="*" backgroundColor="White">
                     <GridLayout rows="*" columns="*">
                         <Image src="{{ item.urlToImage }}" stretch="aspectFill"
