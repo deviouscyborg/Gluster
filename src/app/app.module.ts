@@ -22,6 +22,7 @@ import {NewsComponent} from '~/app/news/news.component';
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 import {CommonModule} from '@angular/common';
+import { GamesComponent } from './games/games.component';
 
 @NgModule({
     bootstrap: [
@@ -46,7 +47,8 @@ import {CommonModule} from '@angular/common';
         AppComponent,
         HomeComponent,
         NewsComponent,
-        NewsDetailComponent
+        NewsDetailComponent,
+        GamesComponent
     ],
     providers: [],
     schemas: [

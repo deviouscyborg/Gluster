@@ -5,6 +5,7 @@ import { Routes } from "@angular/router";
 import {HomeComponent} from '~/app/home/home.component';
 import {NewsComponent} from '~/app/news/news.component';
 import {NewsDetailComponent} from '~/app/news/news-detail/news-detail.component';
+import {GamesComponent} from '~/app/games/games.component';
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -20,7 +21,8 @@ const routes: Routes = [
             path: "detail",
             component: NewsDetailComponent
         }
-    ]}
+    ]},
+    { path: "games", component: GamesComponent },
 ];
 
 @NgModule({
