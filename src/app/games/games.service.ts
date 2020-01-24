@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class GamesService {
-    private serverUrl = "https://games.gamepix.com/games?sid=1&order=q ";
+    private serverUrl = "https://api.famobi.com/feed?a=A-6VYWU&n=100";
     constructor(private http: HttpClient) {}
 
     getGames() {

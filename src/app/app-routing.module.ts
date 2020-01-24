@@ -6,6 +6,7 @@ import {HomeComponent} from '~/app/home/home.component';
 import {NewsComponent} from '~/app/news/news.component';
 import {NewsDetailComponent} from '~/app/news/news-detail/news-detail.component';
 import {GamesComponent} from '~/app/games/games.component';
+import {GamePlayComponent} from '~/app/games/game-play/game-play.component';
 
 const routes: Routes = [
     { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -22,7 +23,18 @@ const routes: Routes = [
             component: NewsDetailComponent
         }
     ]},
-    { path: "games", component: GamesComponent },
+    { path: "games",
+        children: [
+            {
+                path: "",
+                pathMatch: "full",
+                component: GamesComponent
+            },
+            {
+                path: "play",
+                component: GamePlayComponent
+            }
+        ]}
 ];
 
 @NgModule({

@@ -1,37 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
+import {Router} from '@angular/router';
 
 export interface Game {
-    id: string,
-    title: string,
-    creation: string,
-    featured: boolean,
-    height: number,
-    width: number,
-    orientation: string,
-    responsive: boolean,
-    author: string,
-    rkScore: number,
-    rks: number,
-    thumbnailUrl: string,
-    thumbnailUrl100: string,
-    url: string,
-    touch: boolean,
-    hwcontrols: boolean,
-    lastUpdate: string,
-    description: string,
-    category: string,
-    categories: string[],
-    desc_it: string,
-    desc_en: string,
-    desc_fr: string,
-    desc_de: string,
-    desc_es: string,
-    size: number,
-    min_android_version: number,
-    min_ios_version: number,
-    min_wp_version: number,
-    approval_date: string
+    "package_id": string,
+    "name": string,
+    "description": string,
+    "thumb": string,
+    "thumb_60": string,
+    "thumb_120": string,
+    "thumb_180": string,
+    "link": string,
+    "date": string,
+    "aspect_ratio": number,
+    "related": gameQuick[],
+    "categories": string[],
+    "orientation": string,
+    "highscores_enabled": false
+}
+
+export interface gameQuick {
+        "id": string,
+        "name": string,
+        "thumb": string
 }
 
 @Component({
@@ -42,19 +33,24 @@ export interface Game {
 export class GamesComponent implements OnInit {
     isLoading = true;
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService,
+              private router: Router) { }
   games: Game[];
 
   ngOnInit() {
       this.gamesService.getGames()
-          .subscribe( (response: {data: Game[]}) => {
+          .subscribe( (response: {games: Game[]}) => {
               this.isLoading = false;
-              this.games=response.data;
-              console.log(this.games[0]);
+              this.games=response.games;
+              console.log('----', response);
               }, error => {
               this.isLoading = false;
               console.log(error);
           });
   }
+
+    playGame(item: Game) {
+        this.router.navigate(['games/play'], { queryParams: { url: item.link } });
+    }
 
 }
