@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {Page} from '@nativescript/core';
 
 @Component({
   selector: 'ns-game-play',
@@ -11,9 +12,11 @@ export class GamePlayComponent implements OnInit {
     isLoading=false;
     // isLoading=true;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute,
+              private page: Page) { }
 
   ngOnInit() {
+      this.page.actionBarHidden = true;
       this.activatedRoute.queryParams.subscribe( params => {
           this.game_url = params.url;
       });

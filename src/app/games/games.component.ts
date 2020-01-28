@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
+import {Page} from '@nativescript/core';
 
 export interface Game {
     "package_id": string,
@@ -34,10 +35,12 @@ export class GamesComponent implements OnInit {
     isLoading = true;
 
   constructor(private gamesService: GamesService,
-              private router: Router) { }
+              private router: Router,
+              private page: Page) { }
   games: Game[];
 
   ngOnInit() {
+      this.page.actionBarHidden = true;
       this.gamesService.getGames()
           .subscribe( (response: {games: Game[]}) => {
               this.isLoading = false;

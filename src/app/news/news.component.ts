@@ -5,6 +5,7 @@ import {NewsService} from '~/app/news/news.service';
 import {Unsubscribe} from '~/app/unsubscribe';
 import {takeUntil} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {Page} from '@nativescript/core';
 
 declare const IQKeyboardManager: any;
 
@@ -43,7 +44,8 @@ export class NewsComponent extends Unsubscribe implements OnInit {
     actionAndroid;
 
     constructor(private newsService: NewsService,
-                private router: Router) {
+                private router: Router,
+                private page: Page) {
         super();
         this.actionAndroid = isAndroid;
 
@@ -89,6 +91,7 @@ export class NewsComponent extends Unsubscribe implements OnInit {
     }
 
     ngOnInit(): void {
+        this.page.actionBarHidden = true;
 
         this.newsService.getNews()
             .subscribe((response: {articles: DataItem[]}) => {
