@@ -40,7 +40,7 @@ export class GamesComponent implements OnInit {
   games: Game[];
 
   ngOnInit() {
-      this.page.actionBarHidden = true;
+      // this.page.actionBarHidden = true;
       this.gamesService.getGames()
           .subscribe( (response: {games: Game[]}) => {
               this.isLoading = false;

@@ -91,7 +91,7 @@ export class NewsComponent extends Unsubscribe implements OnInit {
     }
 
     ngOnInit(): void {
-        this.page.actionBarHidden = true;
+        // this.page.actionBarHidden = true;
 
         this.newsService.getNews()
             .subscribe((response: {articles: DataItem[]}) => {

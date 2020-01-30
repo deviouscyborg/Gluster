@@ -1,4 +1,11 @@
-<GridLayout rows="*,*">
-<Button row="0" text="news" class="btn btn-primary" [nsRouterLink]="'/news'"></Button>
-<Button row="1" text="games" class="btn btn-primary" [nsRouterLink]="'/games'"></Button>
+<GridLayout rows="*, auto">
+<FlexboxLayout row="0">
+        <page-router-outlet></page-router-outlet>
+</FlexboxLayout>
+<TabView row="1" (selectedIndexChanged)="onSelectedIndexchanged($event)" androidTabsPosition="bottom" height="300px">
+        <StackLayout *tabItem="{title: 'News'}">
+        </StackLayout>
+        <StackLayout *tabItem="{title: 'Games'}">
+        </StackLayout>
+</TabView>
 </GridLayout>
