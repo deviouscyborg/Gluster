@@ -9,8 +9,11 @@
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
             <GridLayout backgroundColor="White">
-                <GridLayout margin="15" (tap)="playGame(item)">
-                    <Image src="{{ item.thumb }}" stretch="aspectFill"></Image>
+                <GridLayout margin="15" (tap)="playGame(item)" height="180" width="180">
+                    <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
+                        <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
+                    </FlexboxLayout>
+                    <Image #image src="{{ item.thumb }}" stretch="aspectFill"></Image>
                     <GridLayout verticalAlignment="bottom">
                         <StackLayout backgroundColor="#BBFFFFFF" paddingTop="8"
                                      paddingBottom="8" paddingLeft="16" paddingRight="16">
