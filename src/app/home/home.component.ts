@@ -14,16 +14,26 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
       this.page.actionBarHidden = true;
   }
-    onSelectedIndexchanged(event) {
-      console.log('EVENT: ',event.newIndex);
-      switch (event.newIndex) {
-          case 0:
-          this.router.navigate(['/news']);
-          break;
-          case 1:
-          this.router.navigate(['/games']);
-          break;
-      }
-    }
 
+    openApp(app: string) {
+        var openApp = require("nativescript-open-app").openApp;
+        switch (app) {
+            case 'facebook':
+                var installed = openApp("com.facebook.katana");
+                console.log("Is it installed? " + installed);
+                break;
+            case 'whatsapp':
+                var installed = openApp("com.whatsapp");
+                console.log("Is it installed? " + installed);
+                break;
+            case 'instagram':
+                var installed = openApp("com.instagram.android");
+                console.log("Is it installed? " + installed);
+                break;
+            case 'snapchat':
+                var installed = openApp("com.snapchat.android");
+                console.log("Is it installed? " + installed);
+                break;
+        }
+    }
 }
