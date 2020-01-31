@@ -6,7 +6,7 @@ import {DataItem} from '~/app/news/news.component';
 
 @Injectable({ providedIn: 'root' })
 export class NewsService {
-    private serverUrl = "https://newsapi.org/v2/top-headlines?sources=techcrunch";
+    private serverUrl = "https://newsapi.org/v2/top-headlines?country=us&category=business";
     constructor(private http: HttpClient) {}
 
     private createRequestHeader() {
