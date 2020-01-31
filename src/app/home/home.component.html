@@ -1,11 +1,9 @@
-<GridLayout rows="*, auto">
-<FlexboxLayout row="0">
-        <page-router-outlet></page-router-outlet>
-</FlexboxLayout>
-<TabView row="1" (selectedIndexChanged)="onSelectedIndexchanged($event)" androidTabsPosition="bottom" height="300px">
-        <StackLayout *tabItem="{title: 'News'}">
+<ActionBar title="Home" class="action-bar"></ActionBar>
+<TabView class="tab-view" androidTabsPosition="bottom">
+        <StackLayout *tabItem="{title: 'News'}" backgroundColor="red">
+                <page-router-outlet name="newsoutlet"></page-router-outlet>
         </StackLayout>
-        <StackLayout *tabItem="{title: 'Games'}">
+        <StackLayout *tabItem="{title: 'Games'}" backgroundColor="yellow">
+                <page-router-outlet name="gamesoutlet"></page-router-outlet>
         </StackLayout>
 </TabView>
-</GridLayout>

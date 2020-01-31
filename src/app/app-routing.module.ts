@@ -9,31 +9,12 @@ import {GamesComponent} from '~/app/games/games.component';
 import {GamePlayComponent} from '~/app/games/game-play/game-play.component';
 
 const routes: Routes = [
-    { path: "", redirectTo: "/home", pathMatch: "full" },
-    { path: "home", component: HomeComponent },
-    { path: "news",
-    children: [
-        {
-            path: "",
-            pathMatch: "full",
-            component: NewsComponent
-        },
-        {
-            path: "detail",
-            component: NewsDetailComponent
-        }
-    ]},
-    { path: "games",
-        children: [
-            {
-                path: "",
-                pathMatch: "full",
-                component: GamesComponent
-            },
-            {
-                path: "play",
-                component: GamePlayComponent
-            }
+    { path: '', redirectTo: '/home/(newsoutlet:news//gamesoutlet:games)', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent, children: [
+            { path: 'news', component: NewsComponent, outlet: 'newsoutlet'},
+            { path: 'news/detail', component: NewsDetailComponent, outlet: 'newsoutlet'},
+            { path: 'games', component: GamesComponent, outlet: 'gamesoutlet'},
+            { path: 'games/play', component: GamePlayComponent, outlet: 'gamesoutlet'}
         ]}
 ];
 
