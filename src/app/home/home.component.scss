@@ -1,1 +1,27 @@
 /* Add mobile styles for the component here.  */
+ActionBar,
+TabStrip
+{
+  background-color: #6200EE;
+  color: #FFFFFF;
+}
+
+TabStripItem {
+  color: #B68AF7;
+}
+
+TabStripItem:active {
+  color: #FFFFFF;
+}
+
+TabStripItem Label {
+  font-size: 12;
+}
+
+TabStripItem Image {
+  font-size: 36;
+}
+
+TabContentItem {
+  background-color: lightgray;
+}

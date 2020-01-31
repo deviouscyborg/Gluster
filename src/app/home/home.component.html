@@ -1,11 +1,37 @@
-<GridLayout rows="*, auto">
-<FlexboxLayout row="0">
-        <page-router-outlet></page-router-outlet>
-</FlexboxLayout>
-<TabView row="1" (selectedIndexChanged)="onSelectedIndexchanged($event)" androidTabsPosition="bottom" height="300px">
-        <StackLayout *tabItem="{title: 'News'}">
-        </StackLayout>
-        <StackLayout *tabItem="{title: 'Games'}">
-        </StackLayout>
-</TabView>
-</GridLayout>
+<Page loaded="pageLoaded" class="page">
+
+        <ActionBar title="Home">
+        </ActionBar>
+
+        <BottomNavigation>
+                <TabStrip>
+                        <TabStripItem>
+                                <Image src="font://&#xf015;" class="fas"></Image>
+                                <Label text="Home"></Label>
+                        </TabStripItem>
+                        <TabStripItem>
+                                <Image src="font://&#xf1ea;" class="fas"></Image>
+                                <Label text="News"></Label>
+                        </TabStripItem>
+                        <TabStripItem>
+                                <Image src="font://&#xf11b;" class="fas"></Image>
+                                <Label text="Games"></Label>
+                        </TabStripItem>
+                </TabStrip>
+
+                <TabContentItem>
+                        <StackLayout>
+                                <Label text="Home" class="h1 text-center p-t-20"></Label>
+                        </StackLayout>
+                </TabContentItem>
+
+                <TabContentItem>
+                                <ns-news></ns-news>
+                </TabContentItem>
+
+                <TabContentItem>
+                                <ns-games></ns-games>
+                </TabContentItem>
+
+        </BottomNavigation>
+</Page>
