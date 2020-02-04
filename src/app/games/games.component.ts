@@ -44,7 +44,7 @@ export class GamesComponent implements OnInit {
       this.gamesService.getGames()
           .subscribe( (response: {games: Game[]}) => {
               this.isLoading = false;
-              this.games=response.games;
+              this.games = response.games;
               console.log('----', response);
               }, error => {
               this.isLoading = false;
