@@ -24,6 +24,7 @@ import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 import {CommonModule} from '@angular/common';
 import { GamesComponent } from './games/games.component';
 import { GamePlayComponent } from './games/game-play/game-play.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
     bootstrap: [
@@ -50,7 +51,8 @@ import { GamePlayComponent } from './games/game-play/game-play.component';
         NewsComponent,
         NewsDetailComponent,
         GamesComponent,
-        GamePlayComponent
+        GamePlayComponent,
+        CategoryComponent
     ],
     providers: [],
     schemas: [
