@@ -24,6 +24,7 @@ import { GamesComponent } from './games/games.component';
 import { GamePlayComponent } from './games/game-play/game-play.component';
 import { CategoryComponent } from './category/category.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     bootstrap: [
@@ -50,7 +51,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
         GamesComponent,
         GamePlayComponent,
         CategoryComponent,
-        FavouritesComponent
+        FavouritesComponent,
+        SearchComponent
     ],
     providers: [],
     schemas: [
