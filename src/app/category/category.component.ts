@@ -54,7 +54,7 @@ export class CategoryComponent implements OnInit {
     loadGames(category: string) {
       this.isLoading = true;
       this.gamesService
-          .getGames(category)
+          .getGames(""+category)
           .subscribe( (response: Game1[]) => {
               this.isLoading = false;
               this.games = response;
