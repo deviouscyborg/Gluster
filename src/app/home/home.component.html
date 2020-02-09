@@ -11,30 +11,33 @@
                                 <Label text="Home"></Label>
                         </TabStripItem>
                         <TabStripItem>
-                                <Image src="font://&#xf1ea;" class="fas"></Image>
-                                <Label text="News"></Label>
+                                <Image src="font://&#xf002;" class="fas"></Image>
+                                <Label text="Search"></Label>
                         </TabStripItem>
                         <TabStripItem>
-                                <Image src="font://&#xf11b;" class="fas"></Image>
-                                <Label text="Games"></Label>
+                                <Image src="font://&#xf24d;" class="fas"></Image>
+                                <Label text="Categories"></Label>
+                        </TabStripItem>
+                        <TabStripItem>
+                                <Image src="font://&#xf005;" class="fas"></Image>
+                                <Label text="Favourites"></Label>
                         </TabStripItem>
                 </TabStrip>
 
                 <TabContentItem>
-                        <StackLayout>
-                                <Label text="Facebook" (tap)="openApp('facebook')" class="h1 text-center p-t-20"></Label>
-                                <Label text="Instagram" (tap)="openApp('instagram')" class="h1 text-center p-t-20"></Label>
-                                <Label text="Whatsapp" (tap)="openApp('whatsapp')" class="h1 text-center p-t-20"></Label>
-                                <Label text="Snapchat" (tap)="openApp('snapchat')" class="h1 text-center p-t-20"></Label>
-                        </StackLayout>
+                        <ns-games></ns-games>
                 </TabContentItem>
 
                 <TabContentItem>
-                                <ns-news></ns-news>
+                        <ns-news></ns-news>
                 </TabContentItem>
 
                 <TabContentItem>
-                                <ns-games></ns-games>
+
+                </TabContentItem>
+
+                <TabContentItem>
+
                 </TabContentItem>
 
         </BottomNavigation>
