@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "nativescript-angular": "^8.20.4",
+    "nativescript-iqkeyboardmanager": "^1.5.1",
     "nativescript-open-app": "^0.3.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-ui-calendar": "^6.0.0",
