@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchBar } from "tns-core-modules/ui/search-bar";
 import {GamesService} from '~/app/games/games.service';
 import {Game1} from '~/app/games/games.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ns-search',
@@ -14,7 +15,8 @@ export class SearchComponent implements OnInit {
     games: Game1[];
 
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -49,7 +51,7 @@ export class SearchComponent implements OnInit {
             });
     }
 
-    playGame(game) {
-
+    playGame(game: Game1) {
+        this.router.navigate(['games/play'], { queryParams: { url: game.link } });
     }
 }
