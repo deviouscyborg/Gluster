@@ -23,6 +23,7 @@ import {CommonModule} from '@angular/common';
 import { GamesComponent } from './games/games.component';
 import { GamePlayComponent } from './games/game-play/game-play.component';
 import { CategoryComponent } from './category/category.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 @NgModule({
     bootstrap: [
@@ -48,7 +49,8 @@ import { CategoryComponent } from './category/category.component';
         HomeComponent,
         GamesComponent,
         GamePlayComponent,
-        CategoryComponent
+        CategoryComponent,
+        FavouritesComponent
     ],
     providers: [],
     schemas: [
