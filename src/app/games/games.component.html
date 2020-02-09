@@ -13,7 +13,7 @@
             <StackLayout orientation="horizontal">
                 <GridLayout rows="auto, *" *ngFor="let item of gamesNew"
                             marginLeft="15" (tap)="playGame(item)">
-                    <Image borderRadius="5%" row="0" [src]="item.thumbBig"
+                    <Image borderRadius="5%" row="0" [src]="item.teaserBig"
                            height="200" width="370" stretch="aspectFill"></Image>
                     <Label row="1" class="mini-titles"
                            [text]="item.title"></Label>
