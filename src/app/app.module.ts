@@ -13,14 +13,12 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import {HomeComponent} from '~/app/home/home.component';
-import {NewsComponent} from '~/app/news/news.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports if you need to use the HttpClient wrapper
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
-import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 import {CommonModule} from '@angular/common';
 import { GamesComponent } from './games/games.component';
 import { GamePlayComponent } from './games/game-play/game-play.component';
@@ -48,8 +46,6 @@ import { CategoryComponent } from './category/category.component';
     declarations: [
         AppComponent,
         HomeComponent,
-        NewsComponent,
-        NewsDetailComponent,
         GamesComponent,
         GamePlayComponent,
         CategoryComponent
