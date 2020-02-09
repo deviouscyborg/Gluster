@@ -12,7 +12,7 @@
     <ScrollView orientation="horizontal">
         <StackLayout orientation="horizontal">
             <GridLayout rows="auto, *" *ngFor="let item of games"
-                        marginLeft="15">
+                        marginLeft="15" (tap)="playGame(item)">
                 <Image borderRadius="5%" row="0" [src]="item.thumb_180"
                        height="370" width="370" stretch="aspectFill"></Image>
                 <Label row="1" fontSize="14" color="black"
