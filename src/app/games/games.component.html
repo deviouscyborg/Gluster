@@ -1,15 +1,36 @@
+<GridLayout>
+<ScrollView orientation="vertical"  *ngIf="!isLoading">
+        <GridLayout rows="auto, *">
 <ActionBar class="action-bar">
     <Label text="Games" class="actionBarLabel"></Label>
 </ActionBar>
 
-<GridLayout tkExampleTitle tkToggleNavButton>
-    <RadListView [items]="games" marginRight="-2">
+
+    <StackLayout marginTop="5" row="0" backgroundColor="White">
+    <Label marginTop="15" textAlignment="left" class="" text="DISCOVER"></Label>
+    <Label marginTop="15" textAlignment="left" class="" text="WHAT'S NEW TODAY"></Label>
+    <ScrollView orientation="horizontal">
+        <StackLayout orientation="horizontal">
+            <GridLayout rows="auto, *" *ngFor="let item of games"
+                        marginLeft="15">
+                <Image borderRadius="5%" row="0" [src]="item.thumb_180"
+                       height="370" width="370" stretch="aspectFill"></Image>
+                <Label row="1" fontSize="14" color="black"
+                       [text]="item.name"></Label>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</StackLayout>
+
+<GridLayout tkExampleTitle tkToggleNavButton row="1" rows="auto, *">
+    <Label row="0" textAlignment="left" class="" text="BROWSE ALL" backgroundColor="white"></Label>
+    <RadListView row="1" [items]="games" marginRight="-2">
         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
                             height="200" spanCount="2">
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
             <GridLayout backgroundColor="White">
-                <GridLayout margin="15" (tap)="playGame(item)" height="180">
+                <GridLayout margin="5" (tap)="playGame(item)" height="180">
                     <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
                         <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
                     </FlexboxLayout>
@@ -27,6 +48,10 @@
         </ng-template>
     </RadListView>
 </GridLayout>
+
+</GridLayout>
+</ScrollView>
 <FlexboxLayout justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
     <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#127abe" width="40" height="40"></ActivityIndicator>
 </FlexboxLayout>
+</GridLayout>
