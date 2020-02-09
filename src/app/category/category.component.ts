@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {GamesService} from '~/app/games/games.service';
+import {Game1} from '~/app/games/games.component';
+
+export interface category {
+    name: string,
+    image: string
+    }
 
 @Component({
   selector: 'ns-category',
@@ -6,10 +13,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+    categories: category[];
+    isLoading= true;
+    games: Game1[];
 
-  constructor() { }
+
+  constructor(private gamesService: GamesService) { }
 
   ngOnInit() {
+      this.isLoading = false;
+      this.categories = [
+          {name: "Adventure",image: ""},
+          {name: "Action",image: ""},
+          {name: "Card",image: ""},
+          {name: "Casino",image: ""},
+          {name: "Dice",image: ""},
+          {name: "Board",image: ""},
+          {name: "Girls",image: ""},
+          {name: "Arcade",image: ""},
+          {name: "Family",image: ""},
+          {name: "Educational",image: ""},
+          {name: "Pairs",image: ""},
+          {name: "Music",image: ""},
+          {name: "Puzzle",image: ""},
+          {name: "Role Playing",image: ""},
+          {name: "Racing",image: ""},
+          {name: "Multiplayer",image: ""},
+          {name: "Strategy",image: ""},
+          {name: "Shooting",image: ""},
+          {name: "Simulation",image: ""},
+          {name: "Jump&Run",image: ""},
+          {name: "Sports",image: ""},
+          {name: "Hidden Object",image: ""},
+          {name: "Kids",image: ""},
+          {name: "Trivia",image: ""},
+          {name: "Match 3",image: ""},
+          {name: "Word",image: ""}];
   }
+
+    loadGames(category: string) {
+      this.isLoading = true;
+      this.gamesService
+          .getGames(category)
+          .subscribe( (response: Game1[]) => {
+              this.isLoading = false;
+              this.games = response;
+          }, error => {
+              this.isLoading = false;
+              console.log(error);
+          });
+    }
 
 }

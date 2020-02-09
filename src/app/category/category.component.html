@@ -1,0 +1,28 @@
+<GridLayout class="cat_page">
+    <Label marginTop="20" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Categories"></Label>
+    <RadListView row="1" [items]="categories" margin="10">
+        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
+                            height="200" spanCount="2">
+        </ListViewGridLayout>
+        <ng-template tkListItemTemplate let-item="item">
+            <GridLayout backgroundColor="White">
+                <GridLayout margin="5" (tap)="loadGames(item)" height="180">
+                    <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
+                        <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
+                    </FlexboxLayout>
+                    <Image #image src="{{ item.image }}" stretch="aspectFill"></Image>
+                    <GridLayout verticalAlignment="bottom">
+                        <StackLayout paddingTop="8" backgroundColor="rgb(127,255,167)"
+                                     paddingBottom="8" paddingLeft="16" paddingRight="16">
+                            <Label text="{{ item.name }}" class="itemName"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </GridLayout>
+            </GridLayout>
+        </ng-template>
+    </RadListView>
+
+    <FlexboxLayout justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
+        <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#127abe" width="40" height="40"></ActivityIndicator>
+    </FlexboxLayout>
+</GridLayout>
