@@ -11,12 +11,12 @@
         <Label marginTop="15" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
         <ScrollView orientation="horizontal">
             <StackLayout orientation="horizontal">
-                <GridLayout rows="auto, *" *ngFor="let item of games"
+                <GridLayout rows="auto, *" *ngFor="let item of gamesNew"
                             marginLeft="15" (tap)="playGame(item)">
-                    <Image borderRadius="5%" row="0" [src]="item.thumb_180"
-                           height="370" width="370" stretch="aspectFill"></Image>
+                    <Image borderRadius="5%" row="0" [src]="item.thumbBig"
+                           height="200" width="370" stretch="aspectFill"></Image>
                     <Label row="1" class="mini-titles"
-                           [text]="item.name"></Label>
+                           [text]="item.title"></Label>
                 </GridLayout>
             </StackLayout>
         </ScrollView>
@@ -36,9 +36,9 @@
                         </FlexboxLayout>
                         <Image #image src="{{ item.thumb }}" stretch="aspectFill"></Image>
                         <GridLayout verticalAlignment="bottom">
-                            <StackLayout paddingTop="8"
+                            <StackLayout paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
                                          paddingBottom="8" paddingLeft="16" paddingRight="16">
-                                <Label text="{{ item.name }}" class="itemName"></Label>
+                                <Label text="{{ item.title }}" class="itemName"></Label>
                                 <Label text="{{item.description }}"
                                        class="itemDesc"></Label>
                             </StackLayout>

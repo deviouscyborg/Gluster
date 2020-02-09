@@ -3,6 +3,23 @@ import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
 
+export interface Game1 {
+    "title": string,
+    "link": string,
+    "publisherLink": string,
+    "description": string,
+    "thumb": string,
+    "thumbBig": string,
+    "teaser": string,
+    "teaserBig": string,
+    "image620": string,
+    "portrait": boolean,
+    "categories": string,
+    "languages": string[],
+    "online_since": string,
+    "screenshots": string[]
+}
+
 export interface Game {
     "package_id": string,
     "name": string,
@@ -37,22 +54,33 @@ export class GamesComponent implements OnInit {
   constructor(private gamesService: GamesService,
               private router: Router,
               private page: Page) { }
-  games: Game[];
+  games: Game1[];
+  gamesNew: Game1[];
 
   ngOnInit() {
       // this.page.actionBarHidden = true;
       this.gamesService.getGames()
-          .subscribe( (response: {games: Game[]}) => {
+          .subscribe( (response: Game1[]) => {
               this.isLoading = false;
-              this.games = response.games;
-              console.log('----', response);
+              this.games = response;
+              console.log('----', this.games);
               }, error => {
+              this.isLoading = false;
+              console.log(error);
+          });
+
+      this.gamesService.getNewGames()
+          .subscribe( (response: Game1[]) => {
+              this.isLoading = false;
+              this.gamesNew = response;
+              console.log('----', this.games);
+          }, error => {
               this.isLoading = false;
               console.log(error);
           });
   }
 
-    playGame(item: Game) {
+    playGame(item: Game1) {
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
     }
 
