@@ -1,1 +1,36 @@
-<Button text="search works!" class="btn btn-primary"></Button>
+<GridLayout rows="auto,auto, *" class="page">
+    <StackLayout row="0">
+    <Label marginTop="20" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Search"></Label>
+    <SearchBar hint="Search all games"
+               [text]="searchPhrase" (textChange)="onTextChanged($event)"
+               (clear)="onClear($event)" (submit)="onSubmit($event)">
+    </SearchBar>
+    </StackLayout>
+    <Label row="1" class="sub-headings" text="ALL RESULTS" backgroundColor="white"></Label>
+    <RadListView row="2" [items]="games" margin="10">
+        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
+                            height="200" spanCount="2">
+        </ListViewGridLayout>
+        <ng-template tkListItemTemplate let-item="item">
+            <GridLayout backgroundColor="White">
+                <GridLayout margin="5" (tap)="playGame(item)" height="180">
+                    <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
+                        <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
+                    </FlexboxLayout>
+                    <Image #image src="{{ item.image620 }}" stretch="aspectFill"></Image>
+                    <GridLayout verticalAlignment="bottom">
+                        <StackLayout paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
+                                     paddingBottom="8" paddingLeft="16" paddingRight="16">
+                            <Label text="{{ item.title }}" class="itemName"></Label>
+                            <Label text="{{item.description }}"
+                                   class="itemDesc"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </GridLayout>
+            </GridLayout>
+        </ng-template>
+    </RadListView>
+    <FlexboxLayout row="2" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
+        <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#127abe" width="40" height="40"></ActivityIndicator>
+    </FlexboxLayout>
+</GridLayout>
