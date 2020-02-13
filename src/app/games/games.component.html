@@ -11,9 +11,11 @@
              <StackLayout orientation="horizontal">
                  <GridLayout borderRadius="10" rows="auto, *"
                              marginLeft="15" (tap)="playGame(item)">
-                     <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
-                     <Image #img borderRadius="10" row="0" [src]="item.teaserBig"
-                            height="200" width="370" stretch="aspectFill" loadMode="async"></Image>
+<!--                     <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+<!--                     <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
+<!--                            height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
+                     <NSImage #img row="0" height="200" width="370" stretch="aspectFill" radius="20" [src]="item.teaserBig" placeholder="~/assets/images/CONSOLE.png" loadMode="async">
+                     </NSImage>
                      <Label row="1" class="mini-titles"
                             [text]="item.title"></Label>
                  </GridLayout>
@@ -28,8 +30,10 @@
             <ng-template tkListItemTemplate let-item="item">
                 <GridLayout borderRadius="10" backgroundColor="White">
                     <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="150">
-                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
-                        <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>
+<!--                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+<!--                        <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
+                        <NSImage #image stretch="aspectFit" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" loadMode="async">
+                        </NSImage>
                         <GridLayout verticalAlignment="bottom">
                             <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(255, 192, 105, 0.67)"
                                          paddingBottom="8" paddingLeft="16" paddingRight="16">
