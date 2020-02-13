@@ -9,13 +9,15 @@
     <Label row="1" class="sub-headings" text="ALL RESULTS" backgroundColor="white"></Label>
     <RadListView row="2" [items]="games" margin="10">
         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                            height="200" spanCount="2">
+                            height="150" spanCount="2">
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
             <GridLayout backgroundColor="White">
-                <GridLayout backgroundColor="#ffc87a" borderRadius="10" margin="5" (tap)="playGame(item)" height="180">
-                    <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
-                    <Image borderRadius="10" #image [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>
+                <GridLayout backgroundColor="#ffc87a" borderRadius="10" margin="5" (tap)="playGame(item)" height="150">
+<!--                    <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+<!--                    <Image borderRadius="10" #image [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
+                    <NSImage #image stretch="aspectFit" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" loadMode="async">
+                    </NSImage>
                     <GridLayout verticalAlignment="bottom">
                         <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
                                      paddingBottom="8" paddingLeft="16" paddingRight="16">
