@@ -26,9 +26,10 @@
                 <Label marginTop="15" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
                 <ScrollView orientation="horizontal">
                     <StackLayout orientation="horizontal">
-                        <GridLayout rows="auto, *" *ngFor="let item of gamesNew"
+                        <GridLayout backgroundColor="#ffc4cf" rows="auto, *" *ngFor="let item of gamesNew"
                                     marginLeft="15" (tap)="playGame(item)">
-                            <Image borderRadius="5%" row="0" [src]="item.teaserBig"
+                            <Image row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png"></Image>
+                            <Image #img borderRadius="5%" row="0" [src]="item.teaserBig"
                                    height="200" width="370" stretch="aspectFill"></Image>
                             <Label row="1" class="mini-titles"
                                    [text]="item.title"></Label>
@@ -42,14 +43,12 @@
                                 height="200" spanCount="2">
             </ListViewGridLayout>
             <ng-template tkListItemTemplate let-item="item">
-                <GridLayout backgroundColor="White">
-                    <GridLayout margin="5" (tap)="playGame(item)" height="180">
-                        <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
-                            <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
-                        </FlexboxLayout>
-                        <Image #image src="{{ item.image620 }}" stretch="aspectFill"></Image>
+                <GridLayout borderRadius="10" backgroundColor="White">
+                    <GridLayout backgroundColor="#ffc4cf" margin="5" (tap)="playGame(item)" height="180">
+                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png"></Image>
+                        <Image #image borderRadius="10" src="{{ item.image620 }}" stretch="aspectFill"></Image>
                         <GridLayout verticalAlignment="bottom">
-                            <StackLayout paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
+                            <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
                                          paddingBottom="8" paddingLeft="16" paddingRight="16">
                                 <Label text="{{ item.title }}" class="itemName"></Label>
                                 <Label text="{{item.description }}"
@@ -63,6 +62,6 @@
     </GridLayout>
 
 <!--    </ScrollView>-->
-    <FlexboxLayout justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
+    <FlexboxLayout backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#127abe" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>

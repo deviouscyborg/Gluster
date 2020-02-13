@@ -13,13 +13,11 @@
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
             <GridLayout backgroundColor="White">
-                <GridLayout margin="5" (tap)="playGame(item)" height="180">
-                    <FlexboxLayout *ngIf="image.isLoaded" justifyContent="center" height="100%" width="100%">
-                        <ActivityIndicator row="0" col="0" busy="true" color="#127abe" width="40" height="40"></ActivityIndicator>
-                    </FlexboxLayout>
-                    <Image #image src="{{ item.image620 }}" stretch="aspectFill"></Image>
+                <GridLayout backgroundColor="#ffc4cf" borderRadius="10" margin="5" (tap)="playGame(item)" height="180">
+                    <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png"></Image>
+                    <Image borderRadius="10" #image src="{{ item.image620 }}" stretch="aspectFill"></Image>
                     <GridLayout verticalAlignment="bottom">
-                        <StackLayout paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
+                        <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
                                      paddingBottom="8" paddingLeft="16" paddingRight="16">
                             <Label text="{{ item.title }}" class="itemName"></Label>
                             <Label text="{{item.description }}"
