@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit {
     onSubmit(args) {
         this.isLoading = true;
         const searchBar = args.object as SearchBar;
+        searchBar.dismissSoftInput();
         this.searchGames(searchBar.text);
         console.log(`Searching for ${searchBar.text}`);
     }
