@@ -7,11 +7,11 @@ TabStrip
 }
 
 TabStripItem {
-  color: #b3bcbb;
+  color: #ff9f49;
 }
 
 TabStripItem:active {
-  color: #000000;
+  color: #ff7200;
 }
 
 TabStripItem Label {
@@ -23,5 +23,5 @@ TabStripItem Image {
 }
 
 TabContentItem {
-  background-color: lightgray;
+  background-color: #ffaf58;
 }

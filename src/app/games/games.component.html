@@ -23,15 +23,15 @@
         <Label row="2" class="sub-headings" paddingTop="5" marginBottom="0" text="BROWSE ALL" backgroundColor="white"></Label>
         <RadListView row="3" [items]="games" margin="10">
             <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                                height="200" spanCount="2">
+                                height="150" spanCount="2">
             </ListViewGridLayout>
             <ng-template tkListItemTemplate let-item="item">
                 <GridLayout borderRadius="10" backgroundColor="White">
-                    <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="180">
+                    <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="150">
                         <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
                         <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>
                         <GridLayout verticalAlignment="bottom">
-                            <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
+                            <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(255, 192, 105, 0.67)"
                                          paddingBottom="8" paddingLeft="16" paddingRight="16">
                                 <Label [text]="item.title" class="itemName"></Label>
                                 <Label [text]="item.description"
