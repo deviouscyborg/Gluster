@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent implements OnInit {
-    @Input() games: Game1;
+    @Input() games: Game1[];
 
   constructor(private router: Router) { }
 

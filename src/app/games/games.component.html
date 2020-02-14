@@ -23,29 +23,7 @@
          </ng-template>
      </RadListView>
         <Label row="2" class="sub-headings" paddingTop="5" marginBottom="0" text="BROWSE ALL" backgroundColor="white"></Label>
-        <RadListView row="3" [items]="games" margin="10">
-            <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                                height="150" spanCount="2">
-            </ListViewGridLayout>
-            <ng-template tkListItemTemplate let-item="item">
-                <GridLayout borderRadius="10" backgroundColor="White">
-                    <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="150">
-<!--                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
-<!--                        <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
-                        <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
-                        </NSImage>
-                        <GridLayout verticalAlignment="bottom">
-                            <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(255, 192, 105, 0.67)"
-                                         paddingBottom="8" paddingLeft="16" paddingRight="16">
-                                <Label [text]="item.title" class="itemName"></Label>
-                                <Label [text]="item.description"
-                                       class="itemDesc"></Label>
-                            </StackLayout>
-                        </GridLayout>
-                    </GridLayout>
-                </GridLayout>
-            </ng-template>
-        </RadListView>
+        <ns-game-list row="3" [games]="games"></ns-game-list>
     </GridLayout>
 
     <FlexboxLayout backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">

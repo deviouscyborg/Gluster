@@ -7,29 +7,7 @@
     </SearchBar>
     </StackLayout>
     <Label row="1" class="sub-headings" text="ALL RESULTS" backgroundColor="white"></Label>
-    <RadListView row="2" [items]="games" margin="10">
-        <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                            height="150" spanCount="2">
-        </ListViewGridLayout>
-        <ng-template tkListItemTemplate let-item="item">
-            <GridLayout backgroundColor="White">
-                <GridLayout backgroundColor="#ffc87a" borderRadius="10" margin="5" (tap)="playGame(item)" height="150">
-<!--                    <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
-<!--                    <Image borderRadius="10" #image [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
-                    <NSImage #image stretch="aspectFit" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
-                    </NSImage>
-                    <GridLayout verticalAlignment="bottom">
-                        <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(193, 255, 148, 0.71)"
-                                     paddingBottom="8" paddingLeft="16" paddingRight="16">
-                            <Label [text]="item.title" class="itemName"></Label>
-                            <Label [text]="item.description"
-                                   class="itemDesc"></Label>
-                        </StackLayout>
-                    </GridLayout>
-                </GridLayout>
-            </GridLayout>
-        </ng-template>
-    </RadListView>
+    <ns-game-list row="2" [games]="games"></ns-game-list>
     <FlexboxLayout row="2" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>
