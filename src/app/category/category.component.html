@@ -1,17 +1,17 @@
 <GridLayout class="page" rows="auto, *">
     <Label row="0" marginTop="20" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Categories"></Label>
-    <RadListView row="1" [items]="categories" margin="10">
+    <RadListView *ngIf="!showGames" row="1" [items]="categories" margin="10">
         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
                             height="100" spanCount="2">
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
-                <FlexboxLayout flexDirection="column" justifyContent="center" borderRadius="10" height="100" backgroundColor="#ffc87a" margin="5" (tap)="loadGames(item)">
+                <FlexboxLayout flexDirection="column" justifyContent="center" borderRadius="10" height="100" backgroundColor="#ffc87a" margin="5" (tap)="loadGames(item.name)">
 <!--                    <Image #image src="{{ item.image }}" stretch="aspectFill"></Image>-->
                             <Label fontSize="20" textAlignment="center" [text]="item.name" class="itemName"></Label>
                 </FlexboxLayout>
         </ng-template>
     </RadListView>
-
+    <ns-game-list *ngIf="showGames" row="1" [games]="games"></ns-game-list>
     <FlexboxLayout justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>

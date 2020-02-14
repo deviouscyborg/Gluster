@@ -16,6 +16,7 @@ export class CategoryComponent implements OnInit {
     categories: category[];
     isLoading= true;
     games: Game1[];
+    showGames= false;
 
 
   constructor(private gamesService: GamesService) { }
@@ -58,6 +59,7 @@ export class CategoryComponent implements OnInit {
           .subscribe( (response: Game1[]) => {
               this.isLoading = false;
               this.games = response;
+              this.showGames = true;
           }, error => {
               this.isLoading = false;
               console.log(error);
