@@ -1,1 +1,24 @@
-<Button text="modal works!" class="btn btn-primary"></Button>
+<GridLayout rows="180, 130, 30" borderRadius="10" borderRadius="10" margin="5" (tap)="playGame()">
+    <NSImage row="0" #image
+             stretch="aspectFit"
+             radius="20"
+             [src]="game.image620"
+             placeholder="~/assets/images/CONSOLE.png"
+             placeholderStretch="aspectFill"
+             loadMode="async">
+    </NSImage>
+    <StackLayout row="1" verticalAlignment="bottom" paddingTop="8"
+                 paddingBottom="8" paddingLeft="16" paddingRight="16">
+        <Label marginTop="8" color="#000000" [text]="game.title" class="itemName"></Label>
+        <ScrollView height="100">
+                                <Label [text]="game.description"
+                                       textWrap="true"
+                                       class="itemDesc"></Label>
+        </ScrollView>
+    </StackLayout>
+    <FlexboxLayout row="2" justifyContent="space-between" paddingLeft="16" paddingRight="16" alignItems="center">
+        <Label padding="8" textAlignment="center" borderRadius="10" backgroundColor="#FF7200" text="Add to Favourites" (tap)="addToFav()"></Label>
+        <Label padding="8" textAlignment="center" text="Play Game" borderRadius="10" backgroundColor="#FF7200" (tap)="playGame()"></Label>
+    </FlexboxLayout>
+
+</GridLayout>
