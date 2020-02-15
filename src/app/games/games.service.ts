@@ -1,5 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {catchError, map} from '~/../node_modules/rxjs/operators';
+import {throwError} from '~/../node_modules/rxjs';
+import {Game1} from '~/app/games/games.component';
 
 @Injectable({ providedIn: 'root' })
 export class GamesService {
@@ -16,10 +19,26 @@ export class GamesService {
         if(!title)
             title='';
 
-        return this.http.get(this.softgamesUrl+'&categories='+categories+'&languages='+languages+'&title='+title);
+        return this.http.get(this.softgamesUrl+'&categories='+categories+'&languages='+languages+'&title='+title)
+            .pipe(
+                map((response: Game1[]) => {
+                    return response;
+                }),
+                catchError( error => {
+                    return throwError( 'Something went wrong!' );
+                })
+            )
     }
 
     getNewGames() {
-        return this.http.get(this.softGamesNew);
+        return this.http.get(this.softGamesNew).
+        pipe(
+            map((response: Game1[]) => {
+                return response;
+            }),
+            catchError( error => {
+                return throwError( 'Something went wrong!' );
+            })
+        )
     }
 }
