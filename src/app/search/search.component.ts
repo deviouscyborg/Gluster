@@ -4,6 +4,10 @@ import {GamesService} from '~/app/games/games.service';
 import {Game1} from '~/app/games/games.component';
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
+import * as application from 'tns-core-modules/application';
+import {AndroidApplication} from 'tns-core-modules/application';
+import {AndroidActivityBackPressedEventData} from 'tns-core-modules/application';
+import {isAndroid} from '@nativescript/core';
 
 @Component({
   selector: 'ns-search',
@@ -22,7 +26,18 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
       this.recentGames= this.favService.getRecentlyPlayed();
+      if(isAndroid) {
+          this.backButtonPressed();
+      }
   }
+
+    backButtonPressed() {
+        application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+            if (true) {
+                data.cancel = true; // prevents default back button behavior
+            }
+        });
+    }
 
     onSubmit(args) {
         this.isLoading = true;
