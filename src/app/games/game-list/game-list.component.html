@@ -10,11 +10,11 @@
                 <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
                 </NSImage>
                 <GridLayout verticalAlignment="bottom">
-                    <StackLayout borderRadius="10" paddingTop="8" backgroundColor="rgba(255, 192, 105, 0.67)"
+                    <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
                                  paddingBottom="8" paddingLeft="16" paddingRight="16">
-                        <Label [text]="item.title" class="itemName"></Label>
-                        <Label [text]="item.description"
-                               class="itemDesc"></Label>
+                        <Label color="#000000" [text]="item.title" class="itemName"></Label>
+<!--                        <Label [text]="item.description"-->
+<!--                               class="itemDesc"></Label>-->
                     </StackLayout>
                 </GridLayout>
             </GridLayout>
