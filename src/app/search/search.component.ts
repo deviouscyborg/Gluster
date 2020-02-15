@@ -3,6 +3,7 @@ import { SearchBar } from "tns-core-modules/ui/search-bar";
 import {GamesService} from '~/app/games/games.service';
 import {Game1} from '~/app/games/games.component';
 import {Router} from '@angular/router';
+import {StorageService} from '~/app/shared/storage.service';
 
 @Component({
   selector: 'ns-search',
@@ -13,31 +14,46 @@ export class SearchComponent implements OnInit {
     searchPhrase: string;
     private isLoading= false;
     games: Game1[];
-
+    recentGames: Game1[];
+    isSearchBarEmpty= true;
 
   constructor(private gamesService: GamesService,
-              private router: Router) { }
+              private favService: StorageService) { }
 
   ngOnInit() {
+      this.recentGames= this.favService.getRecentlyPlayed();
   }
 
     onSubmit(args) {
         this.isLoading = true;
         const searchBar = args.object as SearchBar;
         searchBar.dismissSoftInput();
-        this.searchGames(searchBar.text);
-        console.log(`Searching for ${searchBar.text}`);
+        if(!searchBar.text.length) {
+            this.isSearchBarEmpty = true;
+        } else {
+            this.isSearchBarEmpty = false;
+            this.searchGames(searchBar.text);
+            console.log(`Searching for ${searchBar.text}`);
+        }
     }
 
     onTextChanged(args) {
-        const searchBar = args.object as SearchBar;
-        console.log(`Input changed! New value: ${searchBar.text}`);
+        // const searchBar = args.object as SearchBar;
+        // if(searchBar.text.length === 0) {
+        //     this.isSearchBarEmpty = true;
+        // }
+        // console.log(`Input changed! New value: ${searchBar.text}`);
     }
 
     onClear(args) {
         const searchBar = args.object as SearchBar;
-        this.searchGames(searchBar.text);
-        console.log(`Clear event raised`);
+        if(searchBar.text.length === 0) {
+            this.isSearchBarEmpty = true;
+        } else {
+            this.isSearchBarEmpty = false;
+            this.searchGames(searchBar.text);
+            console.log(`Clear event raised`);
+        }
     }
 
     searchGames(title: string) {
@@ -52,7 +68,4 @@ export class SearchComponent implements OnInit {
             });
     }
 
-    playGame(game: Game1) {
-        this.router.navigate(['games/play'], { queryParams: { url: game.link } });
-    }
 }

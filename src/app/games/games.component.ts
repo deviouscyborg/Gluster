@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
+import {StorageService} from '~/app/shared/storage.service';
 
 export interface Game1 {
     "title": string,
@@ -53,7 +54,8 @@ export class GamesComponent implements OnInit {
 
   constructor(private gamesService: GamesService,
               private router: Router,
-              private page: Page) { }
+              private page: Page,
+              private favService: StorageService) { }
   games: Game1[];
   gamesNew: Game1[];
 
@@ -81,6 +83,7 @@ export class GamesComponent implements OnInit {
   }
 
     playGame(item: Game1) {
+        this.favService.setRecentlyPlayed(item);
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
     }
 

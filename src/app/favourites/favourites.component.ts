@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {StorageService} from '~/app/shared/storage.service';
+import {Game1} from '~/app/games/games.component';
 
 @Component({
   selector: 'ns-favourites',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent implements OnInit {
+    games: Game1[];
 
-  constructor() { }
+  constructor(private favService: StorageService) { }
 
   ngOnInit() {
+      this.games = this.favService.getFavourites();
   }
 
 }
