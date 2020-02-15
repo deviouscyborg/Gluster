@@ -6,17 +6,28 @@ import {Game1} from '~/app/games/games.component';
   providedIn: 'root'
 })
 export class StorageService {
-    favourites: Game1[];
+    favouriteGames: Game1[];
+    recentGames: Game1[];
 
   constructor() {
-      this.favourites = JSON.parse(appSettings.getString('favourite-games') || '[]');
+      this.favouriteGames = JSON.parse(appSettings.getString('favourite-games') || '[]');
   }
 
-  private updateFavourites() {
-      appSettings.setString('favourite-games', JSON.stringify(this.favourites))
+  updateFavourites(favGame: Game1) {
+      this.favouriteGames.push(favGame);
+      appSettings.setString('favourite-games', JSON.stringify(this.favouriteGames));
   }
 
-  private getFavourites() {
-      return this.favourites;
+  getFavourites() {
+      return this.favouriteGames;
   }
+
+    setRecentlyPlayed(recentGame: Game1) {
+        this.recentGames.push(recentGame);
+        appSettings.setString('recently-played', JSON.stringify(this.recentGames));
+    }
+
+    getRecentlyPlayed() {
+        return this.recentGames;
+    }
  }
