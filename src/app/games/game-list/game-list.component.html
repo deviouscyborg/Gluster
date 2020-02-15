@@ -1,10 +1,10 @@
 <RadListView [items]="games" margin="10">
     <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                        height="150" spanCount="2">
+                        height="50" spanCount="3">
     </ListViewGridLayout>
     <ng-template tkListItemTemplate let-item="item">
         <GridLayout borderRadius="10" backgroundColor="White">
-            <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="150">
+            <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="playGame(item)" height="100">
                 <!--                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
                 <!--                        <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
                 <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
