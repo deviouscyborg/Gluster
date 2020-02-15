@@ -11,6 +11,7 @@ export class StorageService {
 
   constructor() {
       this.favouriteGames = JSON.parse(appSettings.getString('favourite-games') || '[]');
+      this.recentGames = JSON.parse(appSettings.getString('recently-played') || '[]');
   }
 
   updateFavourites(favGame: Game1) {
