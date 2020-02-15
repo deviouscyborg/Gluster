@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Game1} from '~/app/games/games.component';
+import * as application from "tns-core-modules/application";
+import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
+import { isAndroid } from "tns-core-modules/platform";
+import {Router} from '@angular/router';
 
 export interface category {
     name: string,
@@ -19,10 +23,15 @@ export class CategoryComponent implements OnInit {
     showGames= false;
 
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService,
+              private cd: ChangeDetectorRef,
+              private router: Router) { }
 
   ngOnInit() {
       this.isLoading = false;
+      if(isAndroid) {
+          this.backButtonPressed();
+      }
       this.categories = [
           {name: "Adventure",image: ""},
           {name: "Action",image: ""},
@@ -52,6 +61,19 @@ export class CategoryComponent implements OnInit {
           {name: "Word",image: ""}];
   }
 
+    backButtonPressed() {
+        application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
+            if (this.showGames) {
+                data.cancel = true; // prevents default back button behavior
+                this.showGames = false;
+                this.cd.detectChanges();
+            } else {
+                data.cancel = true;
+                this.router.navigateByUrl('/home');
+            }
+        });
+    }
+
     loadGames(category: string) {
       this.isLoading = true;
       this.gamesService
@@ -59,7 +81,7 @@ export class CategoryComponent implements OnInit {
           .subscribe( (response: Game1[]) => {
               this.isLoading = false;
               this.games = response;
-              this.showGames = true;
+              this.showGames= true;
           }, error => {
               this.isLoading = false;
               console.log(error);
