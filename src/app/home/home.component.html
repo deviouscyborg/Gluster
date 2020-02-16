@@ -1,9 +1,20 @@
-<GridLayout>
+<RadSideDrawer #rsd drawerTransition="PushTransition" (loaded)="drawerLoaded($event)">
+        <GridLayout tkDrawerContent>
+                <StackLayout backgroundColor="#ff7200">
+                        <ListView id="list-view" [items]="sideDrawerOptions" (itemTap)="sideDrawerOptionTap($event)"
+                                  separatorColor="transparent" height="100%" backgroundColor="#ff7200">
+                                <ng-template let-option="item">
+                                        <Label color="white" [text]="option" padding="20" class="drawer-item"></Label>
+                                </ng-template>
+                        </ListView>
+                </StackLayout>
+        </GridLayout>
+<GridLayout tkMainContent>
 <!--<Page loaded="pageLoaded" class="page">-->
-
-        <ActionBar title="Home">
+        <ActionBar title="Gluster">
+                <ActionItem android.position="actionBar" text="SD" *ngIf="true" (tap)="onOpenDrawerTap()"></ActionItem>
+                <ActionItem ios.systemIcon="res://ic_menu" *ngIf="isIOS()" ios.position="right" (tap)="onOpenDrawerTap()"></ActionItem>
         </ActionBar>
-
         <BottomNavigation>
                 <TabStrip>
                         <TabStripItem>
@@ -43,3 +54,5 @@
         </BottomNavigation>
 <!--</Page>-->
 </GridLayout>
+
+</RadSideDrawer>
