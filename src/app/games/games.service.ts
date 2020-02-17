@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, map} from '~/../node_modules/rxjs/operators';
 import {throwError} from '~/../node_modules/rxjs';
-import {Game1} from '~/app/games/games.component';
+import {Game1} from '~/app/games/games.model';
 
 @Injectable({ providedIn: 'root' })
 export class GamesService {

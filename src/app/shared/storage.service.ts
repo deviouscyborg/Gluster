@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as appSettings from '@nativescript/core/application-settings'
-import {Game1} from '~/app/games/games.component';
+import {Game1} from '~/app/games/games.model';
 
 @Injectable({
   providedIn: 'root'

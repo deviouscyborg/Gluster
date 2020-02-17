@@ -1,10 +1,10 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
-import {Game1} from '~/app/games/games.component';
 import * as application from "tns-core-modules/application";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
 import { isAndroid } from "tns-core-modules/platform";
 import {Router} from '@angular/router';
+import {Game1} from '~/app/games/games.model';
 
 export interface category {
     name: string,

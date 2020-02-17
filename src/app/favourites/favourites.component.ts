@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {StorageService} from '~/app/shared/storage.service';
-import {Game1} from '~/app/games/games.component';
 import {AndroidActivityBackPressedEventData, AndroidApplication, isAndroid} from '@nativescript/core';
 import * as application from 'tns-core-modules/application';
+import {Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-favourites',

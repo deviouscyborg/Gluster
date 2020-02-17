@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchBar } from "tns-core-modules/ui/search-bar";
 import {GamesService} from '~/app/games/games.service';
-import {Game1} from '~/app/games/games.component';
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
 import * as application from 'tns-core-modules/application';
 import {AndroidApplication} from 'tns-core-modules/application';
 import {AndroidActivityBackPressedEventData} from 'tns-core-modules/application';
 import {isAndroid} from '@nativescript/core';
+import {Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-search',

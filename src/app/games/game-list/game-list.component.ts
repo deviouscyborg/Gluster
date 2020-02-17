@@ -1,9 +1,9 @@
 import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
-import {Game1} from '~/app/games/games.component';
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import {ModalComponent} from '~/app/shared/modal/modal.component';
+import {Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-game-list',
