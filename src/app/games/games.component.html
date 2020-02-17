@@ -1,7 +1,7 @@
  <GridLayout *ngIf="!isLoading" tkExampleTitle tkToggleNavButton rows="auto, auto, auto, *" backgroundColor="White">
      <FlexboxLayout row="0" flexDirection="column">
-        <Label marginTop="20" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="DISCOVER"></Label>
-        <Label marginTop="15" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
+        <Label marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="DISCOVER"></Label>
+        <Label marginTop="7" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
      </FlexboxLayout>
      <RadListView row="1" [items]="gamesNew">
          <ListViewGridLayout tkListViewLayout scrollDirection="Horizontal"

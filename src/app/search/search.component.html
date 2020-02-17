@@ -1,6 +1,6 @@
 <GridLayout rows="auto,auto, *" class="page">
     <StackLayout row="0">
-    <Label marginTop="20" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Search"></Label>
+    <Label marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Search"></Label>
     <SearchBar hint="Search all games"
                [text]="searchPhrase" (textChange)="onTextChanged($event)"
                (clear)="onClear($event)" (submit)="onSubmit($event)">
