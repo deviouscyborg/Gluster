@@ -11,11 +11,10 @@
         </GridLayout>
 <GridLayout tkMainContent>
 <!--<Page loaded="pageLoaded" class="page">-->
-        <ActionBar title="Gluster">
+        <ActionBar backgroundColor="#ff7200" color="white" title="Gluster">
                 <ActionItem android.position="actionBar" *ngIf="true" (tap)="onOpenDrawerTap()">
-                        <Label text="&#xf0c9;" class="fas menu"></Label>
+                        <Label  color="white" text="&#xf0c9;" class="fas menu"></Label>
                 </ActionItem>
-                <ActionItem ios.systemIcon="res://ic_menu" *ngIf="isIOS()" ios.position="right" (tap)="onOpenDrawerTap()"></ActionItem>
         </ActionBar>
         <BottomNavigation>
                 <TabStrip>
