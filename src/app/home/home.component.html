@@ -12,7 +12,9 @@
 <GridLayout tkMainContent>
 <!--<Page loaded="pageLoaded" class="page">-->
         <ActionBar title="Gluster">
-                <ActionItem android.position="actionBar" text="SD" *ngIf="true" (tap)="onOpenDrawerTap()"></ActionItem>
+                <ActionItem android.position="actionBar" *ngIf="true" (tap)="onOpenDrawerTap()">
+                        <Label text="&#xf0c9;" class="fas menu"></Label>
+                </ActionItem>
                 <ActionItem ios.systemIcon="res://ic_menu" *ngIf="isIOS()" ios.position="right" (tap)="onOpenDrawerTap()"></ActionItem>
         </ActionBar>
         <BottomNavigation>
