@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import * as application from "tns-core-modules/application";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
@@ -20,7 +20,8 @@ export class CategoryComponent implements OnInit {
     categories: category[];
     isLoading= true;
     games: Game1[];
-    showGames= false;
+    @Output() showGamesValueChange = new EventEmitter<boolean>();
+    @Input() showGames= false;
 
 
   constructor(private gamesService: GamesService,
@@ -29,9 +30,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
       this.isLoading = false;
-      if(isAndroid) {
-          this.backButtonPressed();
-      }
       this.categories = [
           {name: "Adventure",image: ""},
           {name: "Action",image: ""},
@@ -61,18 +59,6 @@ export class CategoryComponent implements OnInit {
           {name: "Word",image: ""}];
   }
 
-    backButtonPressed() {
-        application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-            if (this.showGames) {
-                data.cancel = true; // prevents default back button behavior
-                this.showGames = false;
-                this.cd.detectChanges();
-            } else {
-                data.cancel = true;
-                this.router.navigateByUrl('/home');
-            }
-        });
-    }
 
     loadGames(category: string) {
       this.isLoading = true;
@@ -81,7 +67,8 @@ export class CategoryComponent implements OnInit {
           .subscribe( (response: Game1[]) => {
               this.isLoading = false;
               this.games = response;
-              this.showGames= true;
+              this.showGames = true;
+              this.showGamesValueChange.emit(this.showGames);
           }, error => {
               this.isLoading = false;
               console.log(error);

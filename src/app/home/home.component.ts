@@ -15,6 +15,8 @@ import { isIOS } from "tns-core-modules/platform";
 })
 export class HomeComponent implements OnInit {
     tries: number = 0;
+    tab: string = 'home';
+    showGames=false;
     @ViewChild("rsd", {static:false}) rSideDrawer: ElementRef;
     sideDrawerOptions: string[] = [
         "Share",
@@ -59,17 +61,38 @@ export class HomeComponent implements OnInit {
 
     backButtonPressed() {
         application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-            if(this.router.isActive('/home', false)) {
+            if(this.tab == 'home') {
                 data.cancel = (this.tries++ <= 0);
                 if (data.cancel) Toast.makeText("Press again to exit", "long").show();
                 setTimeout(() => {
                     this.tries = 0;
                 }, 2000);
             }
+            else if(this.tab == 'search') {
+
+            }
+            else if(this.tab == 'cat') {
+                if (this.showGames) {
+                    data.cancel = true; // prevents default back button behavior
+                    this.showGames = false;
+                }
+            }
+            else if(this.tab == 'fav') {
+
+            }
         });
     }
 
     sideDrawerOptionTap(event) {
 
+    }
+
+    tabSelected(tab: string) {
+        this.tab = tab;
+    }
+
+    catShowGamesValue(s) {
+        this.showGames = s;
+        console.log(this.showGames);
     }
 }

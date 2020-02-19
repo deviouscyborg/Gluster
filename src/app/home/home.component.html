@@ -18,19 +18,19 @@
         </ActionBar>
         <BottomNavigation>
                 <TabStrip>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabSelected('home')">
                                 <Image src="font://&#xf015;" class="fas"></Image>
                                 <Label text="Home"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabSelected('search')">
                                 <Image src="font://&#xf002;" class="fas"></Image>
                                 <Label text="Search"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabSelected('cat')">
                                 <Image src="font://&#xf24d;" class="fas"></Image>
                                 <Label text="Categories"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabSelected('fav')">
                                 <Image src="font://&#xf005;" class="fas"></Image>
                                 <Label text="Favourites"></Label>
                         </TabStripItem>
@@ -45,7 +45,7 @@
                 </TabContentItem>
 
                 <TabContentItem>
-                        <ns-category></ns-category>
+                        <ns-category (showGamesValueChange)="catShowGamesValue($event)" [showGames]="showGames"></ns-category>
                 </TabContentItem>
 
                 <TabContentItem>
