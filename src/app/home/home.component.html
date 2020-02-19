@@ -16,21 +16,21 @@
                         <Label  color="white" text="&#xf0c9;" class="fas menu"></Label>
                 </ActionItem>
         </ActionBar>
-        <BottomNavigation>
+        <BottomNavigation  #bottomNav>
                 <TabStrip>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabTapped('home')">
                                 <Image src="font://&#xf015;" class="fas"></Image>
                                 <Label text="Home"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabTapped('search')">
                                 <Image src="font://&#xf002;" class="fas"></Image>
                                 <Label text="Search"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabTapped('cat')">
                                 <Image src="font://&#xf24d;" class="fas"></Image>
                                 <Label text="Categories"></Label>
                         </TabStripItem>
-                        <TabStripItem>
+                        <TabStripItem (tap)="tabTapped('fav')">
                                 <Image src="font://&#xf005;" class="fas"></Image>
                                 <Label text="Favourites"></Label>
                         </TabStripItem>

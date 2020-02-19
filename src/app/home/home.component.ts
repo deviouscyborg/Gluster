@@ -7,6 +7,8 @@ import {AndroidActivityBackPressedEventData} from 'tns-core-modules/application'
 import * as Toast from 'nativescript-toast';
 import {RadSideDrawer} from 'nativescript-ui-sidedrawer';
 import { isIOS } from "tns-core-modules/platform";
+import {CommunicationService} from '~/app/shared/communication.service';
+import { BottomNavigation } from '@nativescript/core/ui';
 
 @Component({
     selector: 'ns-home',
@@ -20,14 +22,23 @@ export class HomeComponent implements OnInit {
         "Share",
         "Rate Us"
     ];
+    tab: string = 'home';
+    showCatGames;
+    @ViewChild('bottomNav', {static: false}) bottomNav: ElementRef;
+    constructor(private page: Page,
+                private router: Router,
+                private comm: CommunicationService) {
+    }
 
-    constructor(private page: Page, private router: Router) {}
 
     ngOnInit() {
         // this.page.actionBarHidden = true;
         if(isAndroid) {
             this.backButtonPressed();
         }
+        this.comm.catDisplayGames.subscribe(res => {
+            this.showCatGames = res;
+        });
     }
     isIOS(): boolean {
         return isIOS;
@@ -59,17 +70,31 @@ export class HomeComponent implements OnInit {
 
     backButtonPressed() {
         application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-            if(this.router.isActive('/home', false)) {
+            if(this.tab === 'home') {
                 data.cancel = (this.tries++ <= 0);
                 if (data.cancel) Toast.makeText("Press again to exit", "long").show();
                 setTimeout(() => {
                     this.tries = 0;
                 }, 2000);
+            } else if (this.tab === 'search') {
+                this.bottomNav.nativeElement.selectedIndex = 0;
+            } else if (this.tab === 'cat') {
+                if(this.showCatGames == true) {
+                    this.comm.catDisplayGames.next(false);
+                } else {
+                    this.bottomNav.nativeElement.selectedIndex = 0;
+                }
+            } else if (this.tab === 'fav') {
+                this.bottomNav.nativeElement.selectedIndex = 0;
             }
         });
     }
 
     sideDrawerOptionTap(event) {
 
+    }
+
+    tabTapped(tab: string) {
+        this.tab = tab;
     }
 }
