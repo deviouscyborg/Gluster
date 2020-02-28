@@ -25,9 +25,8 @@
      </RadListView>
         <Label row="2" class="sub-headings" paddingTop="5" marginBottom="0" text="BROWSE ALL" backgroundColor="white"></Label>
 <!--        <ns-game-list row="3" [games]="games"></ns-game-list>-->
-    <FlexboxLayout row="3" flexWrap="wrap" justifyContent="space-between" margin="15">
-        <GridLayout *ngFor="let item of games" borderRadius="10" backgroundColor="White" (tap)="showModal(item)" [width]="screenWidth*.30">
-            <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" [height]="screenWidth*.30" [width]="screenWidth*.30">
+    <FlexboxLayout row="3" flexWrap="wrap" justifyContent="space-between" margin="15" backgroundColor="White">
+        <GridLayout *ngFor="let item of games" borderRadius="10" backgroundColor="#ffc87a" marginBottom="5" (tap)="showModal(item)" [height]="screenWidth*.30" [width]="screenWidth*.30">
                 <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
                 <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>
                 <GridLayout verticalAlignment="bottom">
@@ -36,7 +35,6 @@
                         <Label color="#000000" [text]="item.title" class="itemName"></Label>
                     </StackLayout>
                 </GridLayout>
-        </GridLayout>
         </GridLayout>
     </FlexboxLayout>
     </GridLayout>
