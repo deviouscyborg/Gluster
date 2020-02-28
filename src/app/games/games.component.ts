@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
 import {StorageService} from '~/app/shared/storage.service';
 import {Game1} from '~/app/games/games.model';
+import { screen } from 'tns-core-modules/platform';
+import {ModalComponent} from '~/app/shared/modal/modal.component';
+import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 
 
 @Component({
@@ -13,11 +16,14 @@ import {Game1} from '~/app/games/games.model';
 })
 export class GamesComponent implements OnInit {
     isLoading = true;
+    screenWidth: number;
 
   constructor(private gamesService: GamesService,
               private router: Router,
               private page: Page,
-              private favService: StorageService) { }
+              private favService: StorageService,
+              private modal: ModalDialogService,
+              private vcRef: ViewContainerRef) { }
   games: Game1[];
   gamesNew: Game1[];
 
@@ -42,11 +48,23 @@ export class GamesComponent implements OnInit {
               this.isLoading = false;
               console.log(error);
           });
+      this.screenWidth = screen.mainScreen.widthDIPs;
   }
 
     playGame(item: Game1) {
         this.favService.setRecentlyPlayed(item);
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
+    }
+
+    showModal(item: Game1) {
+        let options = {
+            context: {game: item},
+            fullscreen: false,
+            viewContainerRef: this.vcRef
+        };
+        this.modal.showModal(ModalComponent, options).then(response => {
+            console.log(response);
+        });
     }
 
 }
