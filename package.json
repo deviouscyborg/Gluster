@@ -25,6 +25,7 @@
     "nativescript-image-cache": "^1.1.6",
     "nativescript-iqkeyboardmanager": "^1.5.1",
     "nativescript-open-app": "^0.3.0",
+    "nativescript-plugin-firebase": "^10.5.0",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-toast": "^2.0.0",
     "nativescript-ui-calendar": "^6.0.0",
