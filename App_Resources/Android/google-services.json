@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1097689542350",
+    "firebase_url": "https://gluster-23e73.firebaseio.com",
+    "project_id": "gluster-23e73",
+    "storage_bucket": "gluster-23e73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097689542350:android:8b12bca2ba30c355dfaa9f",
+        "android_client_info": {
+          "package_name": "com.dazzlecreations.gluster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097689542350-rkougp6gjl13sr6inbfs1d46jif2ti0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAn58-skS-Tvi2y2dmPoQZkiXDTGXpRaDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097689542350-rkougp6gjl13sr6inbfs1d46jif2ti0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
