@@ -1,6 +1,6 @@
 {
   "nativescript": {
-    "id": "org.nativescript.myApp",
+    "id": "com.dazzlecreations.gluster",
     "tns-android": {
       "version": "6.3.1"
     },
@@ -8,7 +8,7 @@
       "version": "6.3.0"
     }
   },
-  "description": "NativeScript Application",
+  "description": "A collection of games",
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
