@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
 
 onMessageReceivedCallback: (message: firebase.Message) => {
     console.log('[Firebase] onMessageReceivedCallback:', { message });
-}
+},
 })
 .then(() => {
     console.log('[Firebase] Initialized');
@@ -31,5 +31,7 @@ onMessageReceivedCallback: (message: firebase.Message) => {
         console.log('[Firebase] Initialize', { error });
     });
 
-}
+    firebase.subscribeToTopic("all").then(() => console.log("Subscribed to topic"));
+
+    }
 }
