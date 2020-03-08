@@ -16,7 +16,8 @@ export class StorageService {
 
   updateFavourites(favGame: Game1) {
       if(this.favouriteGames.indexOf(favGame) === -1) {
-        this.favouriteGames.push(favGame);
+        // this.favouriteGames.push(favGame);
+        this.favouriteGames.unshift(favGame);
         appSettings.setString('favourite-games', JSON.stringify(this.favouriteGames));
       } else {
           this.favouriteGames.splice(this.favouriteGames.indexOf(favGame),1);
@@ -34,7 +35,8 @@ export class StorageService {
 
     setRecentlyPlayed(recentGame: Game1) {
       if(this.recentGames.indexOf(recentGame) === -1) {
-        this.recentGames.push(recentGame);
+        // this.recentGames.push(recentGame);
+        this.recentGames.unshift(recentGame);
         appSettings.setString('recently-played', JSON.stringify(this.recentGames));
       }
     }
