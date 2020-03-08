@@ -4,7 +4,7 @@
                         <ListView id="list-view" [items]="sideDrawerOptions" (itemTap)="sideDrawerOptionTap($event)"
                                   separatorColor="transparent" height="100%" backgroundColor="#ff7200">
                                 <ng-template let-option="item">
-                                        <Label color="white" [text]="option" padding="20" class="drawer-item"></Label>
+                                        <Label color="white" [text]="option" padding="20" class="drawer-item" (tap)="sideDrawerOptionTap(option)"></Label>
                                 </ng-template>
                         </ListView>
                 </StackLayout>

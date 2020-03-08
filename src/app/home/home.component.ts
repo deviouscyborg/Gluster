@@ -9,6 +9,8 @@ import {RadSideDrawer} from 'nativescript-ui-sidedrawer';
 import { isIOS } from "tns-core-modules/platform";
 import {CommunicationService} from '~/app/shared/communication.service';
 import { BottomNavigation } from '@nativescript/core/ui';
+import * as utils from "tns-core-modules/utils/utils";
+
 
 @Component({
     selector: 'ns-home',
@@ -91,7 +93,12 @@ export class HomeComponent implements OnInit {
     }
 
     sideDrawerOptionTap(event) {
-
+        if(event === 'Share') {
+            utils.openUrl("market://details?id=com.dazzlecreations.gluster");
+        } else if(event === 'Rate Us') {
+            utils.openUrl("market://details?id=com.dazzlecreations.gluster");
+        }
+        console.log(event);
     }
 
     tabTapped(tab: string) {
