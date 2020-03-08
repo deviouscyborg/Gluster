@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit {
   }
 
   playGame() {
-      this.params.closeCallback();
+      this.closeModal();
       this.favService.setRecentlyPlayed(this.game);
       setTimeout(()=>{
       this.router.navigate(['games/play'], { queryParams: { url: this.game.link } });
@@ -32,10 +32,14 @@ export class ModalComponent implements OnInit {
   }
 
   addToFav() {
-      this.params.closeCallback();
+      this.closeModal();
       setTimeout(()=>{
       this.favService.updateFavourites(this.game);
       },0);
+  }
+
+  closeModal() {
+      this.params.closeCallback();
   }
 
 }

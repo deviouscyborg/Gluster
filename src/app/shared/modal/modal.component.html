@@ -1,5 +1,9 @@
-<GridLayout rows="180, 130, 30" borderRadius="10" borderRadius="10" margin="5" (tap)="playGame()">
-    <NSImage row="0" #image
+<GridLayout rows="30, 180, 150, 45" borderRadius="10" borderRadius="50" margin="5">
+    <FlexboxLayout row="0" justifyContent="space-between" alignItems="center">
+    <Label fontSize="24" color="#000000" [text]="game.title"></Label>
+    <Label fontSize="24" width="10%" height="100%" color="#000000" textAlignment="center" text="&#xf00d;" class="fas" paddingTop="5" (tap)="closeModal()"></Label>
+    </FlexboxLayout>
+    <NSImage row="1" #image
              stretch="aspectFit"
              radius="20"
              [src]="game.image620"
@@ -7,19 +11,18 @@
              placeholderStretch="aspectFill"
              loadMode="async">
     </NSImage>
-    <StackLayout row="1" verticalAlignment="bottom" paddingTop="8"
-                 paddingBottom="8" paddingLeft="16" paddingRight="16">
-        <Label marginTop="8" color="#000000" [text]="game.title" class="itemName"></Label>
-        <ScrollView height="100">
-                                <Label [text]="game.description"
-                                       textWrap="true"
-                                       class="itemDesc"></Label>
+<!--    <StackLayout row="2" verticalAlignment="bottom" paddingTop="8"-->
+<!--                 paddingBottom="8" paddingLeft="16" paddingRight="16">-->
+        <ScrollView row="2" paddingBottom="8" paddingTop="8" paddingLeft="16" paddingRight="16">
+            <Label [text]="game.description"
+                   textWrap="true"
+                   class="itemDesc"></Label>
         </ScrollView>
-    </StackLayout>
-    <FlexboxLayout row="2" justifyContent="space-between" paddingLeft="16" paddingRight="16" alignItems="center">
+<!--    </StackLayout>-->
+    <FlexboxLayout row="3" justifyContent="space-between" paddingLeft="16" paddingRight="16" alignItems="center">
 <!--        <Label padding="8" textAlignment="center" borderRadius="10" backgroundColor="#FF7200" text="Add to Favourites" (tap)="addToFav()"></Label>-->
-        <Label padding="8" textAlignment="center"  [color]="isFav? '#FF7200' : 'black'" text="&#xf004;" class="fas" (tap)="addToFav()"></Label>
-        <Label padding="8" textAlignment="center" text="Play Game" borderRadius="10" backgroundColor="#FF7200" (tap)="playGame()"></Label>
+        <Label width="40%" padding="8" fontSize="24" textAlignment="center"  color="#FF7200" text="&#xf004;" [class]="isFav? 'fas': 'far'" (tap)="addToFav()"></Label>
+        <Label width="40%" padding="8" fontSize="20" textAlignment="center" text="Play Game" borderRadius="50" backgroundColor="#FF7200" color="white" (tap)="playGame()"></Label>
     </FlexboxLayout>
 
 </GridLayout>
