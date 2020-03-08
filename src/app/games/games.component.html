@@ -1,30 +1,54 @@
- <GridLayout *ngIf="!isLoading" tkExampleTitle tkToggleNavButton rows="auto, auto, auto, *" backgroundColor="White">
-     <FlexboxLayout row="0" flexDirection="column">
-        <Label marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="DISCOVER"></Label>
-        <Label marginTop="7" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
-     </FlexboxLayout>
-     <RadListView row="1" [items]="gamesNew">
-         <ListViewGridLayout tkListViewLayout scrollDirection="Horizontal"
-                             height="200" spanCount="1">
+     <RadListView *ngIf="!isLoading" backgroundColor="White" [items]="games">
+         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
+                             height="50" spanCount="3">
          </ListViewGridLayout>
          <ng-template tkListItemTemplate let-item="item">
-             <StackLayout orientation="horizontal">
-                 <GridLayout borderRadius="10" rows="auto, *"
-                             marginLeft="15" (tap)="playGame(item)">
-<!--                     <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
-<!--                     <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
-<!--                            height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
-                     <NSImage #img row="0" height="200" width="370" stretch="aspectFill" radius="20" [src]="item.teaserBig" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
+             <GridLayout borderRadius="10" backgroundColor="White">
+                 <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="showModal(item)" height="100">
+                     <!--                        <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+                     <!--                        <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
+                     <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
                      </NSImage>
-                     <Label row="1" class="mini-titles"
-                            [text]="item.title"></Label>
+                     <GridLayout verticalAlignment="bottom">
+                         <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
+                                      paddingBottom="8" paddingLeft="16" paddingRight="16">
+                             <Label color="#000000" [text]="item.title" class="itemName"></Label>
+                             <!--                        <Label [text]="item.description"-->
+                             <!--                               class="itemDesc"></Label>-->
+                         </StackLayout>
+                     </GridLayout>
                  </GridLayout>
-             </StackLayout>
+             </GridLayout>
+         </ng-template>
+         <ng-template tkListViewHeader>
+             <GridLayout rows="auto, auto, *" backgroundColor="White">
+                <FlexboxLayout row="0" flexDirection="column">
+                    <Label marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="DISCOVER"></Label>
+                    <Label marginTop="7" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
+                </FlexboxLayout>
+                 <RadListView row="1" [items]="gamesNew">
+                     <ListViewGridLayout tkListViewLayout scrollDirection="Horizontal"
+                                         height="200" spanCount="1">
+                     </ListViewGridLayout>
+                     <ng-template tkListItemTemplate let-item="item">
+                         <StackLayout orientation="horizontal">
+                             <GridLayout borderRadius="10" rows="auto, *"
+                                         marginLeft="15" (tap)="playGame(item)">
+                                 <!--                     <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+                                 <!--                     <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
+                                 <!--                            height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
+                                 <NSImage #img row="0" height="200" width="370" stretch="aspectFill" radius="20" [src]="item.teaserBig" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
+                                 </NSImage>
+                                 <Label row="1" class="mini-titles"
+                                        [text]="item.title"></Label>
+                             </GridLayout>
+                         </StackLayout>
+                     </ng-template>
+                 </RadListView>
+                <Label row="2" class="sub-headings" paddingTop="5" marginBottom="0" text="BROWSE ALL" backgroundColor="white"></Label>
+             </GridLayout>
          </ng-template>
      </RadListView>
-        <Label row="2" class="sub-headings" paddingTop="5" marginBottom="0" text="BROWSE ALL" backgroundColor="white"></Label>
-        <ns-game-list row="3" [games]="games"></ns-game-list>
-    </GridLayout>
 
     <FlexboxLayout backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
