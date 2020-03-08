@@ -17,7 +17,8 @@
         </ScrollView>
     </StackLayout>
     <FlexboxLayout row="2" justifyContent="space-between" paddingLeft="16" paddingRight="16" alignItems="center">
-        <Label padding="8" textAlignment="center" borderRadius="10" backgroundColor="#FF7200" text="Add to Favourites" (tap)="addToFav()"></Label>
+<!--        <Label padding="8" textAlignment="center" borderRadius="10" backgroundColor="#FF7200" text="Add to Favourites" (tap)="addToFav()"></Label>-->
+        <Label padding="8" textAlignment="center"  [color]="isFav? '#FF7200' : 'black'" text="&#xf004;" class="fas" (tap)="addToFav()"></Label>
         <Label padding="8" textAlignment="center" text="Play Game" borderRadius="10" backgroundColor="#FF7200" (tap)="playGame()"></Label>
     </FlexboxLayout>
 

@@ -18,7 +18,14 @@ export class StorageService {
       if(this.favouriteGames.indexOf(favGame) === -1) {
         this.favouriteGames.push(favGame);
         appSettings.setString('favourite-games', JSON.stringify(this.favouriteGames));
+      } else {
+          this.favouriteGames.splice(this.favouriteGames.indexOf(favGame),1);
+          appSettings.setString('favourite-games', JSON.stringify(this.favouriteGames));
       }
+  }
+
+  isFavourite(game: Game1) {
+      return this.favouriteGames.indexOf(game) !== -1;
   }
 
   getFavourites() {

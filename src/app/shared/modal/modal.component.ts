@@ -11,6 +11,7 @@ import {Game1} from '~/app/games/games.model';
 })
 export class ModalComponent implements OnInit {
     game: Game1;
+    isFav: boolean;
 
   constructor(private params: ModalDialogParams,
               private router: Router,
@@ -18,6 +19,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit() {
       this.game = this.params.context.game;
+      this.isFav = this.favService.isFavourite(this.game);
       console.log(this.game, this.params);
   }
 
