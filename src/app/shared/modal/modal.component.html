@@ -3,14 +3,16 @@
     <Label fontSize="24" width="90%" color="#000000" [text]="game.title"></Label>
     <Label fontSize="24" width="10%" height="100%" color="#000000" textAlignment="center" text="&#xf00d;" class="fas" paddingTop="5" (tap)="closeModal()"></Label>
     </FlexboxLayout>
-    <NSImage row="1" #image
-             stretch="aspectFit"
-             radius="20"
-             [src]="game.image620"
-             placeholder="~/assets/images/CONSOLE.png"
-             placeholderStretch="aspectFill"
-             loadMode="async">
-    </NSImage>
+<!--    <NSImage row="1" #image-->
+<!--             stretch="aspectFit"-->
+<!--             radius="20"-->
+<!--             [src]="game.image620"-->
+<!--             placeholder="~/assets/images/CONSOLE.png"-->
+<!--             placeholderStretch="aspectFill"-->
+<!--             loadMode="async">-->
+<!--    </NSImage>-->
+    <Image row="1" *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
+    <Image row="1" #image borderRadius="20" [src]="game.image620" stretch="aspectFill" loadMode="async"></Image>
         <ScrollView row="2" paddingBottom="8" paddingTop="8" paddingLeft="16" paddingRight="16">
             <Label [text]="game.description"
                    textWrap="true"
