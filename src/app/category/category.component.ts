@@ -22,6 +22,7 @@ export class CategoryComponent implements OnInit {
     isLoading= true;
     games: Game1[];
     showGames= false;
+    currentCategory : string = 'Category';
 
 
   constructor(private gamesService: GamesService,
@@ -66,6 +67,7 @@ export class CategoryComponent implements OnInit {
   }
 
     loadGames(category: string) {
+      this.currentCategory = category;
       this.isLoading = true;
       this.gamesService
           .getGames(""+category)
