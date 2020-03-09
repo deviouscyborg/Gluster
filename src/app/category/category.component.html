@@ -7,7 +7,7 @@
         <ng-template tkListItemTemplate let-item="item">
                 <FlexboxLayout [backgroundImage]="item.image" flexDirection="column" justifyContent="flex-end" borderRadius="10" height="100" margin="5" (tap)="loadGames(item.name)">
 <!--                    <Image #image src="{{ item.image }}" stretch="aspectFill"></Image>-->
-                            <Label backgroundColor="#ff8100" fontSize="24" color="white" textAlignment="center" [text]="item.name" class="itemName"></Label>
+                            <Label backgroundColor="#ff8100" borderRadius="10" fontSize="24" color="white" textAlignment="center" [text]="item.name" class="itemName"></Label>
                 </FlexboxLayout>
         </ng-template>
     </RadListView>
