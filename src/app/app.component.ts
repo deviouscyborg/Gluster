@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import * as firebase from 'nativescript-plugin-firebase';
+import { initializeOnAngular } from 'nativescript-image-cache';
 
 @Component({
     selector: "ns-app",
@@ -8,6 +9,7 @@ import * as firebase from 'nativescript-plugin-firebase';
 })
 export class AppComponent implements OnInit{
     constructor () {
+        initializeOnAngular();
     }
     ngOnInit() {
     firebase.init({

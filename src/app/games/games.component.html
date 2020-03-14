@@ -1,14 +1,14 @@
      <RadListView *ngIf="!isLoading" backgroundColor="White" [items]="games">
          <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
-                             height="50" spanCount="3">
+                             height="200" spanCount="2">
          </ListViewGridLayout>
          <ng-template tkListItemTemplate let-item="item">
              <GridLayout borderRadius="10" backgroundColor="White">
-                 <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="showModal(item)" height="100">
-                                             <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
-                                             <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>
-<!--                     <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">-->
-<!--                     </NSImage>-->
+                 <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="showModal(item)" height="200">
+<!--                                             <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+<!--                                             <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
+                     <NSImage #image stretch="aspectFill" radius="20" [src]="item.image620" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
+                     </NSImage>
                      <GridLayout verticalAlignment="bottom">
                          <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
                                       paddingBottom="8" paddingLeft="16" paddingRight="16">
@@ -34,11 +34,11 @@
                          <StackLayout orientation="horizontal">
                              <GridLayout borderRadius="10" rows="auto, *"
                                          marginLeft="15" (tap)="playGame(item)">
-                                                      <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>
-                                                      <Image #img borderRadius="10" row="0" [src]="item.teaserBig"
-                                                             height="200" width="370" stretch="aspectFill" loadMode="async"></Image>
-<!--                                 <NSImage #img row="0" height="200" width="370" stretch="aspectFill" radius="20" [src]="item.teaserBig" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">-->
-<!--                                 </NSImage>-->
+<!--                                                      <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
+<!--                                                      <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
+<!--                                                             height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
+                                 <NSImage #img row="0" height="200" width="370" stretch="aspectFill" radius="20" [src]="item.teaserBig" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFill" loadMode="async">
+                                 </NSImage>
                                  <Label row="1" class="mini-titles"
                                         [text]="item.title"></Label>
                              </GridLayout>
