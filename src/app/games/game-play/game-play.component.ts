@@ -10,7 +10,6 @@ import {Page} from '@nativescript/core';
 export class GamePlayComponent implements OnInit {
     game_url: string;
     isLoading=false;
-    // isLoading=true;
 
   constructor(private activatedRoute: ActivatedRoute,
               private page: Page) { }
@@ -23,7 +22,11 @@ export class GamePlayComponent implements OnInit {
   }
 
   onLoadFinished() {
-      this.isLoading=false;
+      this.isLoading = false;
+  }
+
+  onLoadStarted() {
+      this.isLoading = true;
   }
 
 }
