@@ -9,6 +9,7 @@ import * as firebase from 'nativescript-plugin-firebase';
 export class GamesService {
     private famobiUrl = "https://api.famobi.com/feed?a=A-6VYWU&n=100";
     private softgamesUrl = "https://publishers.softgames.com/categories/games.json?p=pub-16746-16813";
+    private wanted5Url = "https://wanted5games.com/games/html5/";
     softGamesNew = "https://publishers.softgames.com/categories/new_games.json?p=pub-16746-16813&categories=&languages=&title=";
     constructor(private http: HttpClient) {}
 
@@ -44,8 +45,11 @@ export class GamesService {
     }
 
     getFromFirebase() {
-        firebase.getValue('/wanted5')
-            .then(result => console.log(result))
+        return firebase.getValue('/softgames')
+            .then(result => {
+                console.log(result);
+                return result;
+            })
             .catch(error => console.log("Error: " + error));
     }
 }

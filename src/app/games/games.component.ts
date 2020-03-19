@@ -27,15 +27,22 @@ export class GamesComponent implements OnInit {
 
   ngOnInit() {
       // this.page.actionBarHidden = true;
-      this.gamesService.getGames()
-          .subscribe( (response: Game1[]) => {
-              this.isLoading = false;
-              this.games = response;
-              console.log('----', this.games);
-              }, error => {
-              this.isLoading = false;
-              console.log(error);
-          });
+
+      this.gamesService.getFromFirebase()
+          .then(res => {
+                  this.games = res.value;
+                  this.isLoading = false;
+              }
+          );
+      // this.gamesService.getGames()
+      //     .subscribe( (response: Game1[]) => {
+      //         this.isLoading = false;
+      //         this.games = response;
+      //         console.log('----', this.games);
+      //         }, error => {
+      //         this.isLoading = false;
+      //         console.log(error);
+      //     });
 
       this.gamesService.getNewGames()
           .subscribe( (response: Game1[]) => {
