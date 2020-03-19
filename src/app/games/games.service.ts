@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {catchError, map} from '~/../node_modules/rxjs/operators';
 import {throwError} from '~/../node_modules/rxjs';
 import {Game1} from '~/app/games/games.model';
+import * as firebase from 'nativescript-plugin-firebase';
 
 @Injectable({ providedIn: 'root' })
 export class GamesService {
@@ -40,5 +41,11 @@ export class GamesService {
                 return throwError( 'Something went wrong!' );
             })
         )
+    }
+
+    getFromFirebase() {
+        firebase.getValue('/wanted5')
+            .then(result => console.log(result))
+            .catch(error => console.log("Error: " + error));
     }
 }
