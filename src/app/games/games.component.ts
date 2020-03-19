@@ -33,7 +33,11 @@ export class GamesComponent implements OnInit {
                   this.games = res.value;
                   this.isLoading = false;
               }
-          );
+          )
+          .catch(error => {
+              this.isLoading = false;
+              console.log(error);
+          });
       // this.gamesService.getGames()
       //     .subscribe( (response: Game1[]) => {
       //         this.isLoading = false;
