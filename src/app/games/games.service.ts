@@ -32,20 +32,17 @@ export class GamesService {
             )
     }
 
-    getNewGames() {
-        return this.http.get(this.softGamesNew).
-        pipe(
-            map((response: Game1[]) => {
-                return response;
-            }),
-            catchError( error => {
-                return throwError( 'Something went wrong!' );
+    getTrendingGames() {
+        return firebase.getValue('/trendingGames')
+            .then(result => {
+                console.log(result);
+                return result;
             })
-        )
+            .catch(error => console.log("Error: " + error));
     }
 
     getFromFirebase() {
-        return firebase.getValue('/softgames')
+        return firebase.getValue('/allGames')
             .then(result => {
                 console.log(result);
                 return result;

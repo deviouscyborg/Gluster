@@ -15,25 +15,10 @@ export interface Game1 {
     "screenshots": string[]
 }
 
-export interface Game {
-    "package_id": string,
-    "name": string,
-    "description": string,
-    "thumb": string,
-    "thumb_60": string,
-    "thumb_120": string,
-    "thumb_180": string,
+export interface game {
+    "desc": string,
+    "img": string,
     "link": string,
-    "date": string,
-    "aspect_ratio": number,
-    "related": gameQuick[],
-    "categories": string[],
-    "orientation": string,
-    "highscores_enabled": false
-}
-
-export interface gameQuick {
-    "id": string,
     "name": string,
-    "thumb": string
+    "source": string,
 }

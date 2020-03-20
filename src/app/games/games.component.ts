@@ -3,7 +3,7 @@ import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
 import {StorageService} from '~/app/shared/storage.service';
-import {Game1} from '~/app/games/games.model';
+import {game, Game1} from '~/app/games/games.model';
 import {ModalComponent} from '~/app/shared/modal/modal.component';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 
@@ -22,8 +22,8 @@ export class GamesComponent implements OnInit {
               private favService: StorageService,
               private modal: ModalDialogService,
               private vcRef: ViewContainerRef) { }
-  games: Game1[];
-  gamesNew: Game1[];
+  games: game[];
+  trendingGames: Game1[];
 
   ngOnInit() {
       // this.page.actionBarHidden = true;
@@ -48,23 +48,24 @@ export class GamesComponent implements OnInit {
       //         console.log(error);
       //     });
 
-      this.gamesService.getNewGames()
-          .subscribe( (response: Game1[]) => {
-              this.isLoading = false;
-              this.gamesNew = response;
-              console.log('----', this.games);
-          }, error => {
-              this.isLoading = false;
+      this.gamesService.getTrendingGames()
+          .then(res => {
+                  this.trendingGames = res.value;
+                  // this.isLoading = false;
+              }
+          )
+          .catch(error => {
+              // this.isLoading = false;
               console.log(error);
           });
   }
 
-    playGame(item: Game1) {
+    playGame(item: game) {
         this.favService.setRecentlyPlayed(item);
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
     }
 
-    showModal(item: Game1) {
+    showModal(item: game) {
         let options = {
             context: {game: item},
             fullscreen: false,

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StorageService} from '~/app/shared/storage.service';
 import {AndroidActivityBackPressedEventData, AndroidApplication, isAndroid} from '@nativescript/core';
 import * as application from 'tns-core-modules/application';
-import {Game1} from '~/app/games/games.model';
+import {game, Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-favourites',
@@ -10,7 +10,7 @@ import {Game1} from '~/app/games/games.model';
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent implements OnInit {
-    games: Game1[];
+    games: game[];
 
   constructor(private favService: StorageService) { }
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalDialogParams} from 'nativescript-angular/directives/dialogs'
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
-import {Game1} from '~/app/games/games.model';
+import {game, Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-modal',
@@ -10,7 +10,7 @@ import {Game1} from '~/app/games/games.model';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
-    game: Game1;
+    game: game;
     isFav: boolean;
 
   constructor(private params: ModalDialogParams,

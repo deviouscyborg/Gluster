@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import {ModalComponent} from '~/app/shared/modal/modal.component';
-import {Game1} from '~/app/games/games.model';
+import {game, Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-game-list',
@@ -11,7 +11,7 @@ import {Game1} from '~/app/games/games.model';
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent implements OnInit {
-    @Input() games: Game1[];
+    @Input() games: game[];
 
   constructor(private router: Router,
               private favService: StorageService,
@@ -21,12 +21,12 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
   }
 
-  playGame(item: Game1) {
+  playGame(item: game) {
     this.favService.setRecentlyPlayed(item);
     // this.router.navigate(['games/play'], { queryParams: { url: item.link } });
   }
 
-  showModal(item: Game1) {
+  showModal(item: game) {
       let options = {
           context: {game: item},
           fullscreen: false,

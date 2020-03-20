@@ -7,7 +7,7 @@ import * as application from 'tns-core-modules/application';
 import {AndroidApplication} from 'tns-core-modules/application';
 import {AndroidActivityBackPressedEventData} from 'tns-core-modules/application';
 import {isAndroid} from '@nativescript/core';
-import {Game1} from '~/app/games/games.model';
+import {game, Game1} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-search',
@@ -17,8 +17,8 @@ import {Game1} from '~/app/games/games.model';
 export class SearchComponent implements OnInit {
     searchPhrase: string;
     private isLoading= false;
-    games: Game1[];
-    recentGames: Game1[];
+    games: game[];
+    recentGames: game[];
     isSearchBarEmpty= true;
 
   constructor(private gamesService: GamesService,
@@ -72,15 +72,15 @@ export class SearchComponent implements OnInit {
     }
 
     searchGames(title: string) {
-        this.gamesService
-            .getGames("", "", ""+title)
-            .subscribe( (response: Game1[]) => {
-                this.isLoading = false;
-                this.games = response;
-            }, error => {
-                this.isLoading = false;
-                console.log(error);
-            });
+    //     this.gamesService
+    //         .getGames("", "", ""+title)
+    //         .subscribe( (response: game[]) => {
+    //             this.isLoading = false;
+    //             this.games = response;
+    //         }, error => {
+    //             this.isLoading = false;
+    //             console.log(error);
+    //         });
     }
 
 }
