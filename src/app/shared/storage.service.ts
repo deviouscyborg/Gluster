@@ -37,7 +37,7 @@ export class StorageService {
       if(this.recentGames.indexOf(recentGame) === -1) {
         // this.recentGames.push(recentGame);
         this.recentGames.unshift(recentGame);
-        this.recentGames.slice(0, 11);
+        this.recentGames.splice(12, this.recentGames.length);
         appSettings.setString('recently-played', JSON.stringify(this.recentGames));
       }
     }
