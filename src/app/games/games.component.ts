@@ -32,7 +32,7 @@ export class GamesComponent implements OnInit {
 
       this.gamesService.getAllGames()
           .then(res => {
-                  this.games = res.value;
+                  this.games = res;
                   this.isLoading = false;
               }
           )
@@ -52,7 +52,7 @@ export class GamesComponent implements OnInit {
 
       this.gamesService.getTrendingGames()
           .then(res => {
-                  this.trendingGames = res.value;
+                  this.trendingGames = res;
                   // this.isLoading = false;
               }
           )

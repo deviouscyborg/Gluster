@@ -82,7 +82,7 @@ export class CategoryComponent implements OnInit {
       //     });
         this.gamesService.getAllGames()
             .then(res => {
-                    this.games = res.value;
+                    this.games = res;
                     this.isLoading = false;
                     this.showGames= true;
                     this.comm.catDisplayGames.next(this.showGames);
