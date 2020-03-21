@@ -1,4 +1,4 @@
-<GridLayout rows="30, 140, 100, 45" borderRadius="50" margin="5">
+<GridLayout rows="30, 140, 0, 45" margin="5">
     <FlexboxLayout row="0" justifyContent="space-between" alignItems="center">
     <Label fontSize="24" width="90%" color="#000000" [text]="game.name"></Label>
     <Label fontSize="24" width="10%" height="100%" color="#000000" textAlignment="center" text="&#xf00d;" class="fas" paddingTop="5" (tap)="closeModal()"></Label>
@@ -13,14 +13,15 @@
     </NSImage>
 <!--    <Image row="1" *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
 <!--    <Image row="1" #image borderRadius="20" [src]="game.image620" stretch="aspectFill" loadMode="async"></Image>-->
-        <ScrollView row="2" paddingBottom="8" paddingTop="8" paddingLeft="16" paddingRight="16">
-            <Label [text]="game.desc"
-                   textWrap="true"
-                   class="itemDesc"></Label>
-        </ScrollView>
+<!--        <ScrollView row="2" paddingBottom="8" paddingTop="8" paddingLeft="16" paddingRight="16">-->
+<!--            <Label [text]="game.desc"-->
+<!--                   textWrap="true"-->
+<!--                   class="itemDesc"></Label>-->
+<!--        </ScrollView>-->
     <FlexboxLayout row="3" justifyContent="space-between" paddingLeft="16" paddingRight="16" alignItems="center">
-        <Label width="40%" padding="8" fontSize="24" textAlignment="center"  color="#FF7200" text="&#xf004;" [class]="isFav? 'fas': 'far'" (tap)="addToFav()"></Label>
-        <Label width="40%" padding="8" fontSize="20" textAlignment="center" text="Play Game" borderRadius="50" backgroundColor="#FF7200" color="white" (tap)="playGame()"></Label>
+        <Label width="40%" padding="8" fontSize="30" textAlignment="center"  color="#FF7200" text="&#xf004;" [class]="isFav? 'fas': 'far'" (tap)="addToFav()"></Label>
+        <Label width="40%" padding="8" fontSize="30" textAlignment="center"  color="#FF7200" text="&#xf04b;" class="fas" (tap)="playGame()"></Label>
+<!--        <Label width="40%" padding="8" fontSize="20" textAlignment="center" text="Play Game" borderRadius="50" backgroundColor="#FF7200" color="white" (tap)="playGame()"></Label>-->
     </FlexboxLayout>
 
 </GridLayout>
