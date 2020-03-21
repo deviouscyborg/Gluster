@@ -10,6 +10,7 @@ import { isIOS } from "tns-core-modules/platform";
 import {CommunicationService} from '~/app/shared/communication.service';
 import { BottomNavigation } from '@nativescript/core/ui';
 import * as utils from "tns-core-modules/utils/utils";
+import {game} from '~/app/games/games.model';
 
 
 @Component({
@@ -18,6 +19,7 @@ import * as utils from "tns-core-modules/utils/utils";
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    games: game[];
     tries: number = 0;
     @ViewChild("rsd", {static:false}) rSideDrawer: ElementRef;
     sideDrawerOptions: string[] = [
@@ -123,5 +125,9 @@ export class HomeComponent implements OnInit {
 
     tabTapped(tab: string) {
         this.tab = tab;
+    }
+
+    test(gameList) {
+        this.games = gameList;
     }
 }

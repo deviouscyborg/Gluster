@@ -7,7 +7,7 @@
     </SearchBar>
     </StackLayout>
     <Label row="1" class="sub-headings" text="{{isSearchBarEmpty? 'RECENT GAMES': 'ALL RESULTS'}}" backgroundColor="white"></Label>
-    <ns-game-list *ngIf="!isSearchBarEmpty" row="2" [games]="games"></ns-game-list>
+    <ns-game-list *ngIf="!isSearchBarEmpty" row="2" [games]="displayGames"></ns-game-list>
     <ns-game-list *ngIf="isSearchBarEmpty" row="2" [games]="recentGames"></ns-game-list>
     <FlexboxLayout row="2" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>

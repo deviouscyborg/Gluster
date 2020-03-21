@@ -37,11 +37,11 @@
                 </TabStrip>
 
                 <TabContentItem backgroundColor="white">
-                        <ns-games></ns-games>
+                        <ns-games (emitGames)="test($event)"></ns-games>
                 </TabContentItem>
 
                 <TabContentItem backgroundColor="white">
-                        <ns-search></ns-search>
+                        <ns-search [games]="games"></ns-search>
                 </TabContentItem>
 
                 <TabContentItem backgroundColor="white">

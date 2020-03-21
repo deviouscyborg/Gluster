@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
@@ -25,6 +25,7 @@ export class GamesComponent implements OnInit {
               private vcRef: ViewContainerRef,
               private comm: CommunicationService) { }
   games: game[];
+  @Output() emitGames: EventEmitter<game[]> = new EventEmitter<game[]>();
   trendingGames: game[];
 
   ngOnInit() {
@@ -33,6 +34,7 @@ export class GamesComponent implements OnInit {
       this.gamesService.getAllGames()
           .then(res => {
                   this.games = res;
+                  this.emitGames.emit(res);
                   this.isLoading = false;
               }
           )

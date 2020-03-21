@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { SearchBar } from "tns-core-modules/ui/search-bar";
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
@@ -17,7 +17,8 @@ import {game} from '~/app/games/games.model';
 export class SearchComponent implements OnInit {
     searchPhrase: string;
     private isLoading= false;
-    games: game[];
+    @Input() games: game[];
+    displayGames: game[] = [];
     recentGames: game[];
     isSearchBarEmpty= true;
 
@@ -48,7 +49,6 @@ export class SearchComponent implements OnInit {
         } else {
             this.isSearchBarEmpty = false;
             this.searchGames(searchBar.text);
-            console.log(`Searching for ${searchBar.text}`);
         }
     }
 
@@ -56,8 +56,11 @@ export class SearchComponent implements OnInit {
         // const searchBar = args.object as SearchBar;
         // if(searchBar.text.length === 0) {
         //     this.isSearchBarEmpty = true;
+        // } else {
+        //     this.isSearchBarEmpty = false;
+        //     this.searchGames(searchBar.text);
+        //     console.log(`Searching for ${searchBar.text}`);
         // }
-        // console.log(`Input changed! New value: ${searchBar.text}`);
     }
 
     onClear(args) {
@@ -71,16 +74,18 @@ export class SearchComponent implements OnInit {
         }
     }
 
-    searchGames(title: string) {
-    //     this.gamesService
-    //         .getGames("", "", ""+title)
-    //         .subscribe( (response: game[]) => {
-    //             this.isLoading = false;
-    //             this.games = response;
-    //         }, error => {
-    //             this.isLoading = false;
-    //             console.log(error);
-    //         });
+    searchGames(query: string) {
+      this.displayGames = this.games.filter(game => {
+          if (game.name.toString().toLowerCase().includes(query.toLowerCase())) {
+              this.isLoading = false;
+              return game;
+          } else {
+              this.isLoading = false;
+          }
+      });
+      if (!this.displayGames.length) {
+          console.log('Game not found');
+      }
     }
 
 }
