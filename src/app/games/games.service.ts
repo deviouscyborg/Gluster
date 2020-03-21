@@ -39,7 +39,6 @@ export class GamesService {
     getCategories() {
         return firebase.getValue('/categories')
             .then(result => {
-                console.log(result);
                 return result.value;
             })
             .catch(error => console.log("Error: " + error));
