@@ -3,7 +3,7 @@ import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
 import {StorageService} from '~/app/shared/storage.service';
-import {game, Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 import {ModalComponent} from '~/app/shared/modal/modal.component';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 
@@ -23,12 +23,12 @@ export class GamesComponent implements OnInit {
               private modal: ModalDialogService,
               private vcRef: ViewContainerRef) { }
   games: game[];
-  trendingGames: Game1[];
+  trendingGames: game[];
 
   ngOnInit() {
       // this.page.actionBarHidden = true;
 
-      this.gamesService.getFromFirebase()
+      this.gamesService.getAllGames()
           .then(res => {
                   this.games = res.value;
                   this.isLoading = false;

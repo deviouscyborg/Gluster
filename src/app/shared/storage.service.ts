@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as appSettings from '@nativescript/core/application-settings'
-import {game, Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,7 @@ export class StorageService {
       if(this.recentGames.indexOf(recentGame) === -1) {
         // this.recentGames.push(recentGame);
         this.recentGames.unshift(recentGame);
+        this.recentGames.slice(0, 11);
         appSettings.setString('recently-played', JSON.stringify(this.recentGames));
       }
     }

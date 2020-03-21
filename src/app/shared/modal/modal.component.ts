@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ModalDialogParams} from 'nativescript-angular/directives/dialogs'
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
-import {game, Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-modal',

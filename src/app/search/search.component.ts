@@ -7,7 +7,7 @@ import * as application from 'tns-core-modules/application';
 import {AndroidApplication} from 'tns-core-modules/application';
 import {AndroidActivityBackPressedEventData} from 'tns-core-modules/application';
 import {isAndroid} from '@nativescript/core';
-import {game, Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-search',

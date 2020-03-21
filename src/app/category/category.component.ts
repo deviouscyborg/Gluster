@@ -4,7 +4,7 @@ import * as application from "tns-core-modules/application";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
 import { isAndroid } from "tns-core-modules/platform";
 import {Router} from '@angular/router';
-import {Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 import {CommunicationService} from '~/app/shared/communication.service';
 
 export interface category {
@@ -20,7 +20,7 @@ export interface category {
 export class CategoryComponent implements OnInit {
     categories: category[];
     isLoading= true;
-    games: Game1[];
+    games: game[];
     showGames= false;
     currentCategory : string = 'Category';
 
@@ -69,17 +69,29 @@ export class CategoryComponent implements OnInit {
     loadGames(category: string) {
       this.currentCategory = category;
       this.isLoading = true;
-      this.gamesService
-          .getGames(""+category)
-          .subscribe( (response: Game1[]) => {
-              this.isLoading = false;
-              this.games = response;
-              this.showGames= true;
-              this.comm.catDisplayGames.next(this.showGames);
-          }, error => {
-              this.isLoading = false;
-              console.log(error);
-          });
+      // this.gamesService
+      //     .getGames(""+category)
+      //     .subscribe( (response: Game1[]) => {
+      //         this.isLoading = false;
+      //         this.games = response;
+      //         this.showGames= true;
+      //         this.comm.catDisplayGames.next(this.showGames);
+      //     }, error => {
+      //         this.isLoading = false;
+      //         console.log(error);
+      //     });
+        this.gamesService.getAllGames()
+            .then(res => {
+                    this.games = res.value;
+                    this.isLoading = false;
+                    this.showGames= true;
+                    this.comm.catDisplayGames.next(this.showGames);
+                }
+            )
+            .catch(error => {
+                this.isLoading = false;
+                console.log(error);
+            });
     }
 
 }

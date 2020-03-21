@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import {ModalComponent} from '~/app/shared/modal/modal.component';
-import {game, Game1} from '~/app/games/games.model';
+import {game} from '~/app/games/games.model';
 
 @Component({
   selector: 'ns-game-list',
