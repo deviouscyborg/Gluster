@@ -3,6 +3,7 @@ import {ModalDialogParams} from 'nativescript-angular/directives/dialogs'
 import {Router} from '@angular/router';
 import {StorageService} from '~/app/shared/storage.service';
 import {game} from '~/app/games/games.model';
+import {CommunicationService} from '~/app/shared/communication.service';
 
 @Component({
   selector: 'ns-modal',
@@ -15,9 +16,15 @@ export class ModalComponent implements OnInit {
 
   constructor(private params: ModalDialogParams,
               private router: Router,
-              private favService: StorageService,) { }
+              private favService: StorageService,
+              private comm: CommunicationService) { }
 
   ngOnInit() {
+      this.comm.modalDisplay.subscribe(res => {
+          if (res == false) {
+              this.closeModal();
+          }
+      });
       this.game = this.params.context.game;
       this.isFav = this.favService.isFavourite(this.game);
       console.log(this.game, this.params);

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
     ];
     tab: string = 'home';
     showCatGames;
+    modalDisplay;
     @ViewChild('bottomNav', {static: false}) bottomNav: ElementRef;
     constructor(private page: Page,
                 private router: Router,
@@ -40,6 +41,9 @@ export class HomeComponent implements OnInit {
         }
         this.comm.catDisplayGames.subscribe(res => {
             this.showCatGames = res;
+        });
+        this.comm.modalDisplay.subscribe(res => {
+            this.modalDisplay = res;
         });
     }
     isIOS(): boolean {
@@ -73,21 +77,37 @@ export class HomeComponent implements OnInit {
     backButtonPressed() {
         application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
             if(this.tab === 'home') {
-                data.cancel = (this.tries++ <= 0);
-                if (data.cancel) Toast.makeText("Press again to exit", "long").show();
-                setTimeout(() => {
-                    this.tries = 0;
-                }, 2000);
+                if(this.modalDisplay == true) {
+                    this.comm.modalDisplay.next(false);
+                } else {
+                    data.cancel = (this.tries++ <= 0);
+                    if (data.cancel) Toast.makeText("Press again to exit", "long").show();
+                    setTimeout(() => {
+                        this.tries = 0;
+                    }, 2000);
+                }
             } else if (this.tab === 'search') {
-                this.bottomNav.nativeElement.selectedIndex = 0;
-            } else if (this.tab === 'cat') {
-                if(this.showCatGames == true) {
-                    this.comm.catDisplayGames.next(false);
+                if(this.modalDisplay == true) {
+                    this.comm.modalDisplay.next(false);
                 } else {
                     this.bottomNav.nativeElement.selectedIndex = 0;
                 }
+            } else if (this.tab === 'cat') {
+                if(this.modalDisplay == true) {
+                    this.comm.modalDisplay.next(false);
+                } else {
+                    if (this.showCatGames == true) {
+                        this.comm.catDisplayGames.next(false);
+                    } else {
+                        this.bottomNav.nativeElement.selectedIndex = 0;
+                    }
+                }
             } else if (this.tab === 'fav') {
-                this.bottomNav.nativeElement.selectedIndex = 0;
+                if(this.modalDisplay == true) {
+                    this.comm.modalDisplay.next(false);
+                } else {
+                    this.bottomNav.nativeElement.selectedIndex = 0;
+                }
             }
         });
     }

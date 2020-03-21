@@ -6,6 +6,7 @@ import {Subject} from 'rxjs';
 })
 export class CommunicationService {
     catDisplayGames: Subject<boolean> = new Subject();
+    modalDisplay: Subject<boolean> = new Subject();
 
   constructor() { }
 }

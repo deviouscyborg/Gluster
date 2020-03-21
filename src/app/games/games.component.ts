@@ -6,6 +6,7 @@ import {StorageService} from '~/app/shared/storage.service';
 import {game} from '~/app/games/games.model';
 import {ModalComponent} from '~/app/shared/modal/modal.component';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
+import {CommunicationService} from '~/app/shared/communication.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class GamesComponent implements OnInit {
               private page: Page,
               private favService: StorageService,
               private modal: ModalDialogService,
-              private vcRef: ViewContainerRef) { }
+              private vcRef: ViewContainerRef,
+              private comm: CommunicationService) { }
   games: game[];
   trendingGames: game[];
 
@@ -66,6 +68,7 @@ export class GamesComponent implements OnInit {
     }
 
     showModal(item: game) {
+        this.comm.modalDisplay.next(true);
         let options = {
             context: {game: item},
             fullscreen: false,

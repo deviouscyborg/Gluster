@@ -4,6 +4,7 @@ import {StorageService} from '~/app/shared/storage.service';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import {ModalComponent} from '~/app/shared/modal/modal.component';
 import {game} from '~/app/games/games.model';
+import {CommunicationService} from '~/app/shared/communication.service';
 
 @Component({
   selector: 'ns-game-list',
@@ -16,7 +17,8 @@ export class GameListComponent implements OnInit {
   constructor(private router: Router,
               private favService: StorageService,
               private modal: ModalDialogService,
-              private vcRef: ViewContainerRef ) { }
+              private vcRef: ViewContainerRef,
+              private comm: CommunicationService) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,7 @@ export class GameListComponent implements OnInit {
   }
 
   showModal(item: game) {
+      this.comm.modalDisplay.next(true);
       let options = {
           context: {game: item},
           fullscreen: false,
