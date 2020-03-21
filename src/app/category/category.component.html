@@ -5,9 +5,17 @@
                             height="100" spanCount="2">
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
-                <FlexboxLayout [backgroundImage]="item.image" flexDirection="column" justifyContent="flex-end" borderRadius="10" height="100" margin="5" (tap)="loadGames(item.name)">
+                <FlexboxLayout [backgroundImage]="item.image" flexDirection="column" justifyContent="flex-end" borderRadius="10" height="150" margin="5" (tap)="loadGames(item.name)">
 <!--                    <Image #image src="{{ item.image }}" stretch="aspectFill"></Image>-->
-                            <Label backgroundColor="#ff8100" borderRadius="10" fontSize="24" color="white" textAlignment="center" [text]="item.name" class="itemName"></Label>
+<!--                            <Label backgroundColor="#ff8100" borderRadius="10" fontSize="24" color="white" textAlignment="center" [text]="item.name" class="itemName"></Label>-->
+                    <GridLayout verticalAlignment="bottom">
+                        <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
+                                     paddingBottom="8" paddingLeft="16" paddingRight="16">
+                            <Label color="#000000" [text]="item.name" class="itemName"></Label>
+                            <!--                        <Label [text]="item.description"-->
+                            <!--                               class="itemDesc"></Label>-->
+                        </StackLayout>
+                    </GridLayout>
                 </FlexboxLayout>
         </ng-template>
     </RadListView>

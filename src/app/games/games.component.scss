@@ -19,10 +19,11 @@
 }
 
 .itemName {
+  text-align: center;
   color: #33393d;
   font-family: 'Open Sans', 'OpenSans-Bold';
   font-weight: bold;
-  font-size: 14;
+  font-size: 18;
 }
 
 .itemDesc {
@@ -41,15 +42,18 @@
 
 .sub-headings {
   color: black;
-  font-size: 16;
+  font-size: 20;
   text-align: left;
   margin: 15;
+  margin-left: 0;
   font-weight: bold;
 }
 
 .mini-titles {
   color: black;
+  text-align: center;
   margin-left: 10 !important;
   margin: 5;
-  font-size: 14;
+  font-size: 20;
+  font-weight: bold;
 }

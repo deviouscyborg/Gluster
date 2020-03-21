@@ -1,4 +1,4 @@
-     <RadListView *ngIf="!isLoading" backgroundColor="White" [items]="games">
+     <RadListView *ngIf="!isLoading" backgroundColor="White" [items]="games" marginLeft="10" marginRight="10">
          <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
                              height="200" spanCount="2">
          </ListViewGridLayout>
@@ -23,21 +23,21 @@
          <ng-template tkListViewHeader>
              <GridLayout rows="auto, auto, *" backgroundColor="White">
                 <FlexboxLayout row="0" flexDirection="column">
-                    <Label marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="DISCOVER"></Label>
+                    <Label marginTop="10" color="black" textAlignment="left" margin="15" marginLeft="0" fontSize="36" class="heading" text="DISCOVER"></Label>
                     <Label marginTop="7" class="sub-headings" text="WHAT'S NEW TODAY"></Label>
                 </FlexboxLayout>
-                 <RadListView row="1" [items]="trendingGames">
+                 <RadListView row="1" [items]="trendingGames" marginLeft="0">
                      <ListViewGridLayout tkListViewLayout scrollDirection="Horizontal"
                                          height="200" spanCount="1">
                      </ListViewGridLayout>
                      <ng-template tkListItemTemplate let-item="item">
                          <StackLayout orientation="horizontal">
                              <GridLayout borderRadius="10" rows="auto, *"
-                                         marginLeft="15" (tap)="playGame(item)">
+                                         marginLeft="7" marginRight="7" (tap)="playGame(item)">
 <!--                                                      <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
 <!--                                                      <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
 <!--                                                             height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
-                                 <NSImage #img row="0" height="200" width="370" stretch="aspectFit" radius="20" [src]="item.img" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFit" loadMode="async">
+                                 <NSImage #img row="0" height="200" width="340" stretch="aspectFit" radius="20" [src]="item.img" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFit" loadMode="async">
                                  </NSImage>
                                  <Label row="1" class="mini-titles"
                                         [text]="item.name"></Label>
