@@ -1,4 +1,4 @@
-     <RadListView *ngIf="!isLoading" backgroundColor="White" [items]="games" marginLeft="10" marginRight="10">
+     <RadListView *ngIf="!isLoading && games.length" backgroundColor="White" [items]="games" marginLeft="10" marginRight="10">
          <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
                              height="200" spanCount="2">
          </ListViewGridLayout>
@@ -49,6 +49,8 @@
              </GridLayout>
          </ng-template>
      </RadListView>
+
+     <ns-error *ngIf="!isLoading && !games.length" [placeholder]="'Error loading games'"></ns-error>
 
     <FlexboxLayout backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>

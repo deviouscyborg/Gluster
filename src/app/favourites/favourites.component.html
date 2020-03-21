@@ -1,4 +1,5 @@
 <GridLayout class="page" rows="auto, *">
     <Label row="0" marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" text="Favourite Games"></Label>
-    <ns-game-list row="1" [games]="games"></ns-game-list>
+    <ns-game-list *ngIf="games.length" row="1" [games]="games"></ns-game-list>
+    <ns-error *ngIf="!games.length" row="1" [placeholder]="'Your favourite games will appear here'"></ns-error>
 </GridLayout>

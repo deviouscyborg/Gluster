@@ -24,7 +24,7 @@ export class GamesComponent implements OnInit {
               private modal: ModalDialogService,
               private vcRef: ViewContainerRef,
               private comm: CommunicationService) { }
-  games: game[];
+  games: game[] = [];
   @Output() emitGames: EventEmitter<game[]> = new EventEmitter<game[]>();
   trendingGames: game[];
 
