@@ -33,7 +33,7 @@
                      <ng-template tkListItemTemplate let-item="item">
                          <StackLayout orientation="horizontal">
                              <GridLayout borderRadius="10" rows="auto, *"
-                                         marginLeft="7" marginRight="7" (tap)="playGame(item)">
+                                         marginLeft="7" marginRight="7" (tap)="showModal(item)">
 <!--                                                      <Image borderRadius="10" backgroundColor="#ffc87a" row="0" height="200" width="370" *ngIf="img.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
 <!--                                                      <Image #img borderRadius="10" row="0" [src]="item.teaserBig"-->
 <!--                                                             height="200" width="370" stretch="aspectFill" loadMode="async"></Image>-->
