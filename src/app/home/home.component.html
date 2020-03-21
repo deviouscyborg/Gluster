@@ -37,7 +37,7 @@
                 </TabStrip>
 
                 <TabContentItem backgroundColor="white">
-                        <ns-games (emitGames)="test($event)"></ns-games>
+                        <ns-games (emitGames)="assignGames($event)"></ns-games>
                 </TabContentItem>
 
                 <TabContentItem backgroundColor="white">
@@ -45,7 +45,7 @@
                 </TabContentItem>
 
                 <TabContentItem backgroundColor="white">
-                        <ns-category></ns-category>
+                        <ns-category [games]="games"></ns-category>
                 </TabContentItem>
 
                 <TabContentItem backgroundColor="white">

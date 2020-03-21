@@ -127,7 +127,7 @@ export class HomeComponent implements OnInit {
         this.tab = tab;
     }
 
-    test(gameList) {
+    assignGames(gameList) {
         this.games = gameList;
     }
 }

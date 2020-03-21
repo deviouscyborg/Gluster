@@ -19,7 +19,7 @@
                 </FlexboxLayout>
         </ng-template>
     </RadListView>
-    <ns-game-list *ngIf="showGames" row="1" [games]="games"></ns-game-list>
+    <ns-game-list *ngIf="showGames" row="1" [games]="displayGames"></ns-game-list>
     <FlexboxLayout justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import * as application from "tns-core-modules/application";
 import { AndroidApplication, AndroidActivityBackPressedEventData } from "tns-core-modules/application";
@@ -20,7 +20,8 @@ export interface category {
 export class CategoryComponent implements OnInit {
     categories: category[];
     isLoading= true;
-    games: game[];
+    @Input() games: game[];
+    displayGames: game[] = [];
     showGames= false;
     currentCategory : string = 'Category';
 
@@ -69,29 +70,20 @@ export class CategoryComponent implements OnInit {
     loadGames(category: string) {
       this.currentCategory = category;
       this.isLoading = true;
-      // this.gamesService
-      //     .getGames(""+category)
-      //     .subscribe( (response: Game1[]) => {
-      //         this.isLoading = false;
-      //         this.games = response;
-      //         this.showGames= true;
-      //         this.comm.catDisplayGames.next(this.showGames);
-      //     }, error => {
-      //         this.isLoading = false;
-      //         console.log(error);
-      //     });
-        this.gamesService.getAllGames()
-            .then(res => {
-                    this.games = res;
+        this.displayGames = this.games.filter(game => {
+            if (game.categories){
+                if (game.categories.toString().toLowerCase().includes(category.toLowerCase())) {
                     this.isLoading = false;
                     this.showGames= true;
                     this.comm.catDisplayGames.next(this.showGames);
+                    return game;
                 }
-            )
-            .catch(error => {
+            } else {
+                this.showGames= true;
+                this.comm.catDisplayGames.next(this.showGames);
                 this.isLoading = false;
-                console.log(error);
-            });
+            }
+        });
     }
 
 }
