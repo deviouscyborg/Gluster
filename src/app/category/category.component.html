@@ -1,22 +1,22 @@
 <GridLayout class="page" rows="auto, *">
-    <Label row="0" marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" [text]="showGames? currentCategory : 'Category'"></Label>
+    <Label row="0" marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" [text]="showGames? currentCategory : 'Categories'"></Label>
     <RadListView *ngIf="!showGames" row="1" [items]="categories" margin="10">
         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
                             height="100" spanCount="2">
         </ListViewGridLayout>
         <ng-template tkListItemTemplate let-item="item">
-                <FlexboxLayout [backgroundImage]="item.image" flexDirection="column" justifyContent="flex-end" borderRadius="10" height="150" margin="5" (tap)="loadGames(item.name)">
-<!--                    <Image #image src="{{ item.image }}" stretch="aspectFill"></Image>-->
-<!--                            <Label backgroundColor="#ff8100" borderRadius="10" fontSize="24" color="white" textAlignment="center" [text]="item.name" class="itemName"></Label>-->
+            <GridLayout borderRadius="10" backgroundColor="White">
+                <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="loadGames(item)" height="130">
+                    <NSImage #image stretch="aspectFit" radius="20" [src]="item.image" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFit" loadMode="async">
+                    </NSImage>
                     <GridLayout verticalAlignment="bottom">
                         <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
                                      paddingBottom="8" paddingLeft="16" paddingRight="16">
                             <Label color="#000000" [text]="item.name" class="itemName"></Label>
-                            <!--                        <Label [text]="item.description"-->
-                            <!--                               class="itemDesc"></Label>-->
                         </StackLayout>
                     </GridLayout>
-                </FlexboxLayout>
+                </GridLayout>
+            </GridLayout>
         </ng-template>
     </RadListView>
     <ns-game-list *ngIf="showGames" row="1" [games]="displayGames"></ns-game-list>

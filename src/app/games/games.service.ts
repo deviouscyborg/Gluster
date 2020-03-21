@@ -31,7 +31,16 @@ export class GamesService {
         return firebase.getValue('/displayCount')
             .then(result => {
                 console.log(result);
-                return result;
+                return result.value;
+            })
+            .catch(error => console.log("Error: " + error));
+    }
+
+    getCategories() {
+        return firebase.getValue('/categories')
+            .then(result => {
+                console.log(result);
+                return result.value;
             })
             .catch(error => console.log("Error: " + error));
     }

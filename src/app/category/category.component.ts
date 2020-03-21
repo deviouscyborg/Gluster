@@ -32,35 +32,17 @@ export class CategoryComponent implements OnInit {
               private comm: CommunicationService) { }
 
   ngOnInit() {
-      this.isLoading = false;
-      this.categories = [
-          {name: "Adventure",image: "~/assets/images/adventure.png"},
-          {name: "Action",image: "~/assets/images/action.png"},
-          {name: "Card",image: "~/assets/images/card.png"},
-          {name: "Casino",image: "~/assets/images/casino.png"},
-          {name: "Dice",image: "~/assets/images/dice.png"},
-          {name: "Board",image: "~/assets/images/board.png"},
-          {name: "Girls",image: "~/assets/images/girls.png"},
-          {name: "Arcade",image: "~/assets/images/arcade.png"},
-          {name: "Family",image: "~/assets/images/family.png"},
-          {name: "Educational",image: "~/assets/images/educational.png"},
-          {name: "Pairs",image: "~/assets/images/pairs.png"},
-          {name: "Music",image: "~/assets/images/music.png"},
-          {name: "Puzzle",image: "~/assets/images/puzzle.png"},
-          {name: "Role Playing",image: "~/assets/images/roleplaying.png"},
-          {name: "Racing",image: "~/assets/images/racing.png"},
-          // {name: "Multiplayer",image: "~/assets/images/multiplayer.png"},
-          {name: "Strategy",image: "~/assets/images/strategy.png"},
-          {name: "Shooting",image: "~/assets/images/shooting.png"},
-          {name: "Simulation",image: "~/assets/images/simulation.png"},
-          {name: "Jump&Run",image: "~/assets/images/jumpnrun.png"},
-          {name: "Sports",image: "~/assets/images/sports.png"},
-          {name: "Hidden Object",image: "~/assets/images/hiddenobject.png"},
-          {name: "Kids",image: "~/assets/images/kids.png"},
-          {name: "Trivia",image: "~/assets/images/trivia.png"},
-          {name: "Match 3",image: "~/assets/images/match3.png"},
-          {name: "Word",image: "~/assets/images/word.png"}];
-
+      this.isLoading = true;
+      this.gamesService.getCategories()
+          .then(res => {
+              this.categories = res;
+              this.isLoading = false;
+          }
+      )
+          .catch(error => {
+              this.isLoading = false;
+              console.log(error);
+          });
       this.comm.catDisplayGames.subscribe(res => {
           this.showGames = res;
           this.cd.detectChanges();
