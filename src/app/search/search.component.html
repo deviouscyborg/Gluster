@@ -7,8 +7,10 @@
     </SearchBar>
     </StackLayout>
     <Label row="1" class="sub-headings" text="{{isSearchBarEmpty? 'RECENT GAMES': 'ALL RESULTS'}}" backgroundColor="white"></Label>
-    <ns-game-list *ngIf="!isSearchBarEmpty" row="2" [games]="displayGames"></ns-game-list>
-    <ns-game-list *ngIf="isSearchBarEmpty" row="2" [games]="recentGames"></ns-game-list>
+    <ns-game-list *ngIf="!isSearchBarEmpty && displayGames.length" row="2" [games]="displayGames"></ns-game-list>
+    <ns-game-list *ngIf="isSearchBarEmpty && recentGames.length" row="2" [games]="recentGames"></ns-game-list>
+    <ns-error *ngIf="!isLoading && isSearchBarEmpty && recentGames.length == 0" row="2" [placeholder]="'Your recently played games will appear here'"></ns-error>
+    <ns-error *ngIf="!isLoading && !isSearchBarEmpty && displayGames.length == 0" row="2" [placeholder]="'No Games Found'"></ns-error>
     <FlexboxLayout row="2" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>
