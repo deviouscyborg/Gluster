@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ns-error',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error.component.scss']
 })
 export class ErrorComponent implements OnInit {
+    @Input() placeholder: string = 'Error';
 
   constructor() { }
 

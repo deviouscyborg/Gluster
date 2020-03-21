@@ -10,6 +10,7 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     NativeScriptCommonModule
   ],
+    exports: [ErrorComponent, ModalComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
 export class SharedModule { }

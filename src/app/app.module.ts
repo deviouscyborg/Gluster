@@ -29,6 +29,7 @@ import { CategoryComponent } from './category/category.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { SearchComponent } from './search/search.component';
 import { GameListComponent } from './games/game-list/game-list.component';
+import {SharedModule} from '~/app/shared/shared.module';
 
 @NgModule({
     bootstrap: [
@@ -47,7 +48,8 @@ import { GameListComponent } from './games/game-list/game-list.component';
         NativeScriptFormsModule,
         NativeScriptHttpClientModule,
         AppRoutingModule,
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     declarations: [
         AppComponent,
@@ -58,7 +60,7 @@ import { GameListComponent } from './games/game-list/game-list.component';
         FavouritesComponent,
         SearchComponent,
         GameListComponent,
-        ModalComponent
+        // ModalComponent
     ],
     entryComponents: [ModalComponent],
     providers: [ModalDialogService],
