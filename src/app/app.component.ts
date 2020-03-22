@@ -11,6 +11,7 @@ import * as Admob from "nativescript-admob";
 export class AppComponent implements OnInit{
     private androidBannerId: string = "ca-app-pub-4500169197993541/8614481600";
     private androidInterstitialId: string = "ca-app-pub-4500169197993541/7109828246";
+    private androidNativeId: string = "ca-app-pub-4500169197993541/2766617926";
     // private iosBannerId: string = "ca-app-pub-RRRR/TTTT";
     // private iosInterstitialId: string = "ca-app-pub-GGGG/HHHH";
 
