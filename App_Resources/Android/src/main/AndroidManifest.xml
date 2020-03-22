@@ -28,6 +28,9 @@
 		<meta-data
 				android:name="com.google.firebase.messaging.default_notification_color"
 				android:resource="@color/colorAccent" />
+		<meta-data
+				android:name="com.google.android.gms.ads.APPLICATION_ID"
+				android:value="ca-app-pub-4500169197993541~5839557724" />
 
 		<activity
 			android:name="com.tns.NativeScriptActivity"
