@@ -49,17 +49,15 @@ export class CategoryComponent implements OnInit {
       });
   }
 
-    loadGames(category: string) {
-      this.currentCategory = category;
+    loadGames(category: category) {
+      this.currentCategory = category.name;
       this.isLoading = true;
         this.displayGames = this.games.filter(game => {
-            if (game.categories){
-                if (game.categories.toString().toLowerCase().includes(category.toLowerCase())) {
+                if (game.categories.toString().toLowerCase().includes(this.currentCategory.toString().toLowerCase())) {
                     this.isLoading = false;
                     this.showGames= true;
                     this.comm.catDisplayGames.next(this.showGames);
                     return game;
-                }
             } else {
                 this.showGames= true;
                 this.comm.catDisplayGames.next(this.showGames);
