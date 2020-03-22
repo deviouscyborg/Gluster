@@ -49,5 +49,27 @@ export class AdmobService {
         });
     }
 
+    public preLoadInterstitial() {
+        Admob.preloadInterstitial({
+            testing: true,
+            // iosInterstitialId: this.iosInterstitialId,
+            androidInterstitialId: this.androidInterstitialId,
+            // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
+            onAdClosed: function () { console.log("interstitial closed") }
+        }).then(function() {
+            console.log("interstitial preloaded - you can now call 'showInterstitial' whenever you're ready to do so");
+        }, function(error) {
+            console.log("admob preloadInterstitial error: " + error);
+        });
+    }
+
+    public showInterstitial() {
+        Admob.showInterstitial().then(function() {
+            console.log("interstitial showing");
+        }, function(error) {
+            console.log("admob showInterstitial error: " + error);
+        });
+    }
+
   constructor() { }
 }

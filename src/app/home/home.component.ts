@@ -11,6 +11,7 @@ import {CommunicationService} from '~/app/shared/communication.service';
 import { BottomNavigation } from '@nativescript/core/ui';
 import * as utils from "tns-core-modules/utils/utils";
 import {game} from '~/app/games/games.model';
+import {AdmobService} from '~/app/shared/admob.service';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class HomeComponent implements OnInit {
     @ViewChild('bottomNav', {static: false}) bottomNav: ElementRef;
     constructor(private page: Page,
                 private router: Router,
-                private comm: CommunicationService) {
+                private comm: CommunicationService,
+                private admob: AdmobService) {
     }
 
 
