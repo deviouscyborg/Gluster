@@ -14,12 +14,12 @@ export class AdmobService {
     public createBanner() {
         Admob.createBanner({
             testing: true,
-            size: Admob.AD_SIZE.SMART_BANNER,
+            size: Admob.AD_SIZE.BANNER,
             // iosBannerId: this.iosBannerId,
             androidBannerId: this.androidBannerId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"],
             margins: {
-                bottom: 0
+                bottom: 56
             }
         }).then(function() {
             console.log("admob createBanner done");
