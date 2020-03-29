@@ -40,6 +40,8 @@ export class GamesComponent implements OnInit {
                   this.isLoading = false;
                   setTimeout(() => {
                   this.showAds();
+                  this.admob.preLoadInterstitial();
+                  this.admob.preloadRewardedVideo();
                   }, 0);
               }
           )

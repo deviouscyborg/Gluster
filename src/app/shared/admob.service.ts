@@ -58,7 +58,9 @@ export class AdmobService {
             onAdClosed: function () { console.log("interstitial closed") }
         }).then(() => {
             console.log("interstitial preloaded - you can now call 'showInterstitial' whenever you're ready to do so");
-            this.showInterstitial();
+            setTimeout(() => {
+                this.showInterstitial();
+            },0);
         }, (error) => {
             console.log("admob preloadInterstitial error: " + error);
         });
@@ -70,6 +72,45 @@ export class AdmobService {
         }, (error) => {
             console.log("admob showInterstitial error: " + error);
         });
+    }
+
+    public preloadRewardedVideo() {
+        Admob.preloadRewardedVideoAd({
+            testing: true,
+            // iosAdPlacementId: "ca-app-pub-XXXXXX/YYYYY2", // add your own
+            androidAdPlacementId: "ca-app-pub-4500169197993541/4828586746", // add your own
+            // keywords: ["keyword1", "keyword2"], // add keywords for ad targeting
+        }).then(
+            () => {
+                setTimeout(() => {
+                    this.showRewardedVideo();
+                },0);
+                console.log("RewardedVideoAd preloaded - you can now call 'showRewardedVideoAd' whenever you're ready to do so");
+            },
+            (error) => {
+                console.log("admob preloadRewardedVideoAd error: " + error);
+            }
+        )
+    }
+
+    showRewardedVideo() {
+        Admob.showRewardedVideoAd({
+            onRewarded: (reward) => {
+                console.log("onRewarded");
+            },
+            onRewardedVideoAdLeftApplication: () => console.log("onRewardedVideoAdLeftApplication"),
+            onRewardedVideoAdClosed: () => console.log("onRewardedVideoAdClosed"),
+            onRewardedVideoAdOpened: () => console.log("onRewardedVideoAdOpened"),
+            onRewardedVideoStarted: () => console.log("onRewardedVideoStarted"),
+            onRewardedVideoCompleted: () => console.log("onRewardedVideoCompleted"),
+        }).then(
+            () => {
+                console.log("RewardedVideoAd showing");
+            },
+            (error) => {
+                console.log("admob showRewardedVideoAd error: " + error);
+            }
+        )
     }
 
   constructor() { }
