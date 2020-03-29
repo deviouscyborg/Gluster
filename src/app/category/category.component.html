@@ -1,4 +1,4 @@
-<GridLayout class="page" rows="auto, *">
+<GridLayout marginBottom="50" class="page" rows="auto, *">
     <Label row="0" marginTop="10" color="black" textAlignment="left" margin="15" fontSize="36" class="heading" [text]="showGames? currentCategory : 'Categories'"></Label>
     <RadListView *ngIf="!showGames" row="1" [items]="categories" margin="10">
         <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"

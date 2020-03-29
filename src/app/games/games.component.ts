@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewContainerRef} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {GamesService} from '~/app/games/games.service';
 import {Router} from '@angular/router';
 import {Page} from '@nativescript/core';
@@ -25,7 +25,7 @@ export class GamesComponent implements OnInit {
               private modal: ModalDialogService,
               private vcRef: ViewContainerRef,
               private comm: CommunicationService,
-              private admob: AdmobService) { }
+              private admob: AdmobService) {}
   games: game[] = [];
   @Output() emitGames: EventEmitter<game[]> = new EventEmitter<game[]>();
   trendingGames: game[];
@@ -38,6 +38,9 @@ export class GamesComponent implements OnInit {
                   this.games = res;
                   this.emitGames.emit(res);
                   this.isLoading = false;
+                  setTimeout(() => {
+                  this.showAds();
+                  }, 0);
               }
           )
           .catch(error => {
@@ -71,7 +74,7 @@ export class GamesComponent implements OnInit {
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
     }
 
-    test() {
+    showAds() {
       this.admob.createBanner();
     }
 
