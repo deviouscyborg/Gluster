@@ -52,6 +52,7 @@
 
      <ns-error *ngIf="!isLoading && !games.length" [placeholder]="'Error loading games'"></ns-error>
 
-    <FlexboxLayout backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
+    <FlexboxLayout flexDirection="column" backgroundColor="white" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
+        <Image src="~/assets/images/ICON.png" width="150" height="150"></Image>
         <ActivityIndicator row="0" col="0" [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
     </FlexboxLayout>

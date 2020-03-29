@@ -7,6 +7,7 @@ import {game} from '~/app/games/games.model';
 import {ModalComponent} from '~/app/shared/modal/modal.component';
 import {ModalDialogService} from 'nativescript-angular/modal-dialog'
 import {CommunicationService} from '~/app/shared/communication.service';
+import {AdmobService} from '~/app/shared/admob.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class GamesComponent implements OnInit {
               private favService: StorageService,
               private modal: ModalDialogService,
               private vcRef: ViewContainerRef,
-              private comm: CommunicationService) { }
+              private comm: CommunicationService,
+              private admob: AdmobService) { }
   games: game[] = [];
   @Output() emitGames: EventEmitter<game[]> = new EventEmitter<game[]>();
   trendingGames: game[];
@@ -67,6 +69,10 @@ export class GamesComponent implements OnInit {
     playGame(item: game) {
         this.favService.setRecentlyPlayed(item);
         this.router.navigate(['games/play'], { queryParams: { url: item.link } });
+    }
+
+    test() {
+      this.admob.createBanner();
     }
 
     showModal(item: game) {
