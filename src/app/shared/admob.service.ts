@@ -21,17 +21,17 @@ export class AdmobService {
             margins: {
                 bottom: 56
             }
-        }).then(function() {
+        }).then(() => {
             console.log("admob createBanner done");
-        }, function(error) {
+        }, (error) => {
             console.log("admob createBanner error: " + error);
         });
     }
 
     public hideBanner() {
-        Admob.hideBanner().then(function() {
+        Admob.hideBanner().then(() => {
             console.log("admob hideBanner done");
-        }, function(error) {
+        }, (error) => {
             console.log("admob hideBanner error: " + error);
         });
     }
@@ -42,9 +42,9 @@ export class AdmobService {
             // iosInterstitialId: this.iosInterstitialId,
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
-        }).then(function() {
+        }).then(() => {
             console.log("admob createInterstitial done");
-        }, function(error) {
+        }, (error) => {
             console.log("admob createInterstitial error: " + error);
         });
     }
@@ -56,17 +56,18 @@ export class AdmobService {
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
             onAdClosed: function () { console.log("interstitial closed") }
-        }).then(function() {
+        }).then(() => {
             console.log("interstitial preloaded - you can now call 'showInterstitial' whenever you're ready to do so");
-        }, function(error) {
+            this.showInterstitial();
+        }, (error) => {
             console.log("admob preloadInterstitial error: " + error);
         });
     }
 
     public showInterstitial() {
-        Admob.showInterstitial().then(function() {
+        Admob.showInterstitial().then(() => {
             console.log("interstitial showing");
-        }, function(error) {
+        }, (error) => {
             console.log("admob showInterstitial error: " + error);
         });
     }
