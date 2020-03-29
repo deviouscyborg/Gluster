@@ -8,12 +8,13 @@ export class AdmobService {
     private androidBannerId: string = "ca-app-pub-4500169197993541/8614481600";
     private androidInterstitialId: string = "ca-app-pub-4500169197993541/7109828246";
     private androidNativeId: string = "ca-app-pub-4500169197993541/2766617926";
+    private androidRewardedVideoId: string = "ca-app-pub-4500169197993541/4828586746";
     // private iosBannerId: string = "ca-app-pub-RRRR/TTTT";
     // private iosInterstitialId: string = "ca-app-pub-GGGG/HHHH";
 
     public createBanner() {
         Admob.createBanner({
-            testing: true,
+            // testing: true,
             size: Admob.AD_SIZE.BANNER,
             // iosBannerId: this.iosBannerId,
             androidBannerId: this.androidBannerId,
@@ -38,7 +39,7 @@ export class AdmobService {
 
     public createInterstitial() {
         Admob.createInterstitial({
-            testing: true,
+            // testing: true,
             // iosInterstitialId: this.iosInterstitialId,
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
@@ -51,7 +52,7 @@ export class AdmobService {
 
     public preLoadInterstitial() {
         Admob.preloadInterstitial({
-            testing: true,
+            // testing: true,
             // iosInterstitialId: this.iosInterstitialId,
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
@@ -60,7 +61,7 @@ export class AdmobService {
             console.log("interstitial preloaded - you can now call 'showInterstitial' whenever you're ready to do so");
             setTimeout(() => {
                 this.showInterstitial();
-            },0);
+            },60000);
         }, (error) => {
             console.log("admob preloadInterstitial error: " + error);
         });
@@ -76,15 +77,15 @@ export class AdmobService {
 
     public preloadRewardedVideo() {
         Admob.preloadRewardedVideoAd({
-            testing: true,
+            // testing: true,
             // iosAdPlacementId: "ca-app-pub-XXXXXX/YYYYY2", // add your own
-            androidAdPlacementId: "ca-app-pub-4500169197993541/4828586746", // add your own
+            androidAdPlacementId: this.androidRewardedVideoId, // add your own
             // keywords: ["keyword1", "keyword2"], // add keywords for ad targeting
         }).then(
             () => {
                 setTimeout(() => {
                     this.showRewardedVideo();
-                },0);
+                },60000);
                 console.log("RewardedVideoAd preloaded - you can now call 'showRewardedVideoAd' whenever you're ready to do so");
             },
             (error) => {
