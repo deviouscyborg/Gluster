@@ -12,6 +12,7 @@ import { BottomNavigation } from '@nativescript/core/ui';
 import * as utils from "tns-core-modules/utils/utils";
 import {game} from '~/app/games/games.model';
 import {AdmobService} from '~/app/shared/admob.service';
+import * as SocialShare from "nativescript-social-share";
 
 
 @Component({
@@ -118,7 +119,7 @@ export class HomeComponent implements OnInit {
 
     sideDrawerOptionTap(event) {
         if(event === 'Share') {
-            utils.openUrl("market://details?id=com.dazzlecreations.gluster");
+            SocialShare.shareText("https://play.google.com/store/apps/details?id=com.dazzlecreations.gluster \n Download Gluster: All games in one game", "Share app");
         } else if(event === 'Rate Us') {
             utils.openUrl("market://details?id=com.dazzlecreations.gluster");
         }
