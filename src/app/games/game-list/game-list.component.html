@@ -5,16 +5,12 @@
     <ng-template tkListItemTemplate let-item="item">
         <GridLayout borderRadius="10" backgroundColor="White">
             <GridLayout borderRadius="10" backgroundColor="#ffc87a" margin="5" (tap)="showModal(item)" height="200">
-                <!--                                             <Image *ngIf="image.isLoaded" stretch="aspectFit" src="~/assets/images/CONSOLE.png" loadMode="async"></Image>-->
-                <!--                                             <Image #image borderRadius="10" [src]="item.image620" stretch="aspectFill" loadMode="async"></Image>-->
                 <NSImage #image stretch="aspectFit" radius="20" [src]="item.img" placeholder="~/assets/images/CONSOLE.png" placeholderStretch="aspectFit" loadMode="async">
                 </NSImage>
                 <GridLayout verticalAlignment="bottom">
                     <StackLayout paddingTop="8" backgroundColor="rgba(248,248,248,0.76)"
                                  paddingBottom="8" paddingLeft="16" paddingRight="16">
                         <Label color="#000000" [text]="item.name" class="itemName"></Label>
-                        <!--                        <Label [text]="item.description"-->
-                        <!--                               class="itemDesc"></Label>-->
                     </StackLayout>
                 </GridLayout>
             </GridLayout>

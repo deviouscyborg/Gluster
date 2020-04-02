@@ -1,7 +1,7 @@
 <GridLayout>
 <WebView #webview [src]="game_url" (loadStarted)="onLoadStarted()" (loadFinished)="onLoadFinished()" (loaded)="onWebViewLoaded($event)" [ngClass]="{'hide': isLoading}"></WebView>
 <FlexboxLayout flexDirection="column" justifyContent="center" height="100%" width="100%" *ngIf="isLoading">
-    <Image src="~/assets/images/ICON.png" width="150" height="150"></Image>
+    <Image src="~/assets/images/ICON.png" decodedWidth="150" decodedHeight="150" width="150" height="150"></Image>
     <ActivityIndicator [busy]="isLoading" color="#ff8100" width="40" height="40"></ActivityIndicator>
 </FlexboxLayout>
 </GridLayout>
