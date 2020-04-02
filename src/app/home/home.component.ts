@@ -31,11 +31,11 @@ export class HomeComponent implements OnInit {
     tab: string = 'home';
     showCatGames;
     modalDisplay;
+    isPlaying;
     @ViewChild('bottomNav', {static: false}) bottomNav: ElementRef;
     constructor(private page: Page,
                 private router: Router,
-                private comm: CommunicationService,
-                private admob: AdmobService) {
+                private comm: CommunicationService) {
     }
 
 
@@ -49,6 +49,9 @@ export class HomeComponent implements OnInit {
         });
         this.comm.modalDisplay.subscribe(res => {
             this.modalDisplay = res;
+        });
+        this.comm.isPlaying.subscribe(res => {
+            this.isPlaying = res;
         });
     }
     isIOS(): boolean {
@@ -81,37 +84,35 @@ export class HomeComponent implements OnInit {
 
     backButtonPressed() {
         application.android.on(AndroidApplication.activityBackPressedEvent, (data: AndroidActivityBackPressedEventData) => {
-            if(this.tab === 'home') {
-                if(this.modalDisplay == true) {
-                    this.comm.modalDisplay.next(false);
-                } else {
-                    data.cancel = (this.tries++ <= 0);
-                    if (data.cancel) Toast.makeText("Press again to exit", "long").show();
-                    setTimeout(() => {
-                        this.tries = 0;
-                    }, 2000);
-                }
-            } else if (this.tab === 'search') {
-                if(this.modalDisplay == true) {
-                    this.comm.modalDisplay.next(false);
-                } else {
-                    this.bottomNav.nativeElement.selectedIndex = 0;
-                }
-            } else if (this.tab === 'cat') {
-                if(this.modalDisplay == true) {
-                    this.comm.modalDisplay.next(false);
-                } else {
-                    if (this.showCatGames == true) {
-                        this.comm.catDisplayGames.next(false);
-                    } else {
+            if(this.modalDisplay) {
+                this.comm.modalDisplay.next(false);
+                console.log('EXIT MODAL');
+            } else if(this.isPlaying) {
+                data.cancel = (this.tries++ <= 0);
+                if (data.cancel)
+                    Toast.makeText("Press again to exit game", "long").show();
+                else
+                    this.comm.isPlaying.next(false);
+                setTimeout(() => {
+                    this.tries = 0;
+                }, 2000);
+                console.log('EXIT GAME');
+            } else {
+                switch (this.tab) {
+                    case 'home': data.cancel = (this.tries++ <= 0);
+                                 if (data.cancel) Toast.makeText("Press again to exit", "long").show();
+                                 setTimeout(() => {
+                                     this.tries = 0;
+                                 }, 2000);
+                        console.log('EXIT 1');
+                        break;
+                    case 'search':
+                    case 'cat':
+                    case 'fav':
                         this.bottomNav.nativeElement.selectedIndex = 0;
-                    }
-                }
-            } else if (this.tab === 'fav') {
-                if(this.modalDisplay == true) {
-                    this.comm.modalDisplay.next(false);
-                } else {
-                    this.bottomNav.nativeElement.selectedIndex = 0;
+                        this.tab = 'home';
+                        console.log('EXIT 2');
+                        break;
                 }
             }
         });

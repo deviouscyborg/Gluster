@@ -24,8 +24,6 @@ export class GamePlayComponent implements OnInit {
   }
     onWebViewLoaded(args) {
         let webView: WebView = this.webViewRef.nativeElement;
-        console.log('<><>', webView);
-
         webView.on(WebView.loadStartedEvent, function() {
             // webView.android.setWebContentsDebuggingEnabled(true);
             webView.android.getSettings().setJavaScriptEnabled(true);
