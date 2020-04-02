@@ -61,7 +61,7 @@ export class AdmobService {
             console.log("interstitial preloaded - you can now call 'showInterstitial' whenever you're ready to do so");
             setTimeout(() => {
                 this.showInterstitial();
-            },60000);
+            },180000);
         }, (error) => {
             console.log("admob preloadInterstitial error: " + error);
         });
@@ -85,7 +85,7 @@ export class AdmobService {
             () => {
                 setTimeout(() => {
                     this.showRewardedVideo();
-                },60000);
+                },480000);
                 console.log("RewardedVideoAd preloaded - you can now call 'showRewardedVideoAd' whenever you're ready to do so");
             },
             (error) => {
