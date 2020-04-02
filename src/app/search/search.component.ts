@@ -16,7 +16,7 @@ import {game} from '~/app/games/games.model';
 })
 export class SearchComponent implements OnInit {
     searchPhrase: string;
-    private isLoading= false;
+    isLoading= false;
     @Input() games: game[];
     displayGames: game[] = [];
     recentGames: game[];
