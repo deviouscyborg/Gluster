@@ -14,7 +14,7 @@ export class AdmobService {
 
     public createBanner() {
         Admob.createBanner({
-            // testing: true,
+            testing: true,
             size: Admob.AD_SIZE.BANNER,
             // iosBannerId: this.iosBannerId,
             androidBannerId: this.androidBannerId,
@@ -39,7 +39,7 @@ export class AdmobService {
 
     public createInterstitial() {
         Admob.createInterstitial({
-            // testing: true,
+            testing: true,
             // iosInterstitialId: this.iosInterstitialId,
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
@@ -52,7 +52,7 @@ export class AdmobService {
 
     public preLoadInterstitial() {
         Admob.preloadInterstitial({
-            // testing: true,
+            testing: true,
             // iosInterstitialId: this.iosInterstitialId,
             androidInterstitialId: this.androidInterstitialId,
             // iosTestDeviceIds: ["yourTestDeviceUDIDs"]
@@ -77,7 +77,7 @@ export class AdmobService {
 
     public preloadRewardedVideo() {
         Admob.preloadRewardedVideoAd({
-            // testing: true,
+            testing: true,
             // iosAdPlacementId: "ca-app-pub-XXXXXX/YYYYY2", // add your own
             androidAdPlacementId: this.androidRewardedVideoId, // add your own
             // keywords: ["keyword1", "keyword2"], // add keywords for ad targeting
